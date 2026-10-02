@@ -255,9 +255,6 @@ function HomeContent() {
               <p className="mt-2 text-stone-600 leading-relaxed">
                 {t.about.emblemDesc}
               </p>
-              <p className="mt-2 text-sm text-stone-500">
-                {t.about.emblemStats}
-              </p>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">

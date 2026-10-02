@@ -27,9 +27,9 @@ const MEMBERS_KEY = "aamzu-members";
 const EVENTS_KEY = "aamzu-events";
 const AUTH_KEY = "aamzu-admin";
 
-// Simple gate for the community admin panel (client-side only).
+// Display name only — the real check happens in src/app/api/admin/login/route.ts
+// (server-side, credentials from env, never shipped to the browser).
 export const ADMIN_USER = "Assam";
-const ADMIN_PASS = "MZUSET@123";
 
 function load<T>(key: string): T | null {
   try {
@@ -42,7 +42,7 @@ function load<T>(key: string): T | null {
 
 type Store = {
   authed: boolean;
-  login: (u: string, p: string) => boolean;
+  login: (u: string, p: string) => Promise<boolean>;
   logout: () => void;
   savedMembers: Member[] | null;
   saveMembers: (m: Member[]) => void;
@@ -53,7 +53,7 @@ type Store = {
 
 const AdminContext = createContext<Store>({
   authed: false,
-  login: () => false,
+  login: async () => false,
   logout: () => {},
   savedMembers: null,
   saveMembers: () => {},
@@ -73,13 +73,23 @@ export function AdminProvider({ children }: { children: ReactNode }) {
     setSavedEvents(load<EventItem[]>(EVENTS_KEY));
   }, []);
 
-  const login = (u: string, p: string) => {
-    const ok = u === ADMIN_USER && p === ADMIN_PASS;
-    if (ok) {
-      setAuthed(true);
-      localStorage.setItem(AUTH_KEY, "1");
+  const login = async (u: string, p: string) => {
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: u, password: p }),
+      });
+      const data = await res.json().catch(() => ({ ok: false }));
+      const ok = res.ok && data.ok === true;
+      if (ok) {
+        setAuthed(true);
+        localStorage.setItem(AUTH_KEY, "1");
+      }
+      return ok;
+    } catch {
+      return false;
     }
-    return ok;
   };
 
   const logout = () => {

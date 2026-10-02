@@ -72,9 +72,9 @@ export default function AdminPanel() {
         <h3 className="font-bold text-xl text-center">🔐 {t.admin.loginTitle}</h3>
         <p className="text-sm text-stone-500 text-center mt-1">{t.admin.loginSub}</p>
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            setError(!login(user.trim(), pass));
+            setError(!(await login(user.trim(), pass)));
           }}
           className="grid gap-3 mt-5"
         >

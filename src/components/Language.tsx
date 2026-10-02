@@ -58,7 +58,6 @@ const en = {
     emblemTitle: "Our real emblem — from Instagram",
     emblemDesc:
       "This is the actual profile picture of @assam_association_mzu (saved as public/insta/logo.jpg — see public/insta/ATTRIBUTION.txt for the scrape method). Red circular seal — “ASSAM ASSOCIATION” on the top arc, “MIZORAM UNIVERSITY” below, jaapi-xorai heritage motif at the centre. It now serves as our navbar, hero badge, footer and favicon.",
-    emblemStats: "234 Followers • 3 Following • 94 Posts (at scrape time, Oct 2026).",
     cards: [
       {
         t: "🤝 Who We Are",
@@ -269,7 +268,6 @@ const as: Dict = {
     emblemTitle: "আমাৰ প্ৰকৃত প্ৰতীক — ইনষ্টাগ্ৰামৰ পৰা",
     emblemDesc:
       "এয়া @assam_association_mzu ৰ প্ৰকৃত প্ৰ'ফাইল ছবি (public/insta/logo.jpg ত সংৰক্ষিত — পদ্ধতিৰ বাবে public/insta/ATTRIBUTION.txt চাওক)। ৰঙা ঘূৰণীয়া মোহৰ — ওপৰত “ASSAM ASSOCIATION”, তলত “MIZORAM UNIVERSITY”, মাজত জাপি-শৰাই ঐতিহ্যৰ চিহ্ন। এতিয়া ই আমাৰ নেভবাৰ, হিৰ' বেজ, ফুটাৰ আৰু ফেভিকন।",
-    emblemStats: "২৩৪ অনুসৰণকাৰী • ৩ অনুসৰণ • ৯৪ পোষ্ট (অক্টোবৰ ২০২৬ত লোৱা)।",
     cards: [
       {
         t: "🤝 আমি কোন",
