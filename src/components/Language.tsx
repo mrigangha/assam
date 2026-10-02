@@ -54,9 +54,9 @@ const en = {
     kicker: "About Us",
     title: "A small Assam in Aizawl",
     sub: "The Assamese students' community at Mizoram University, Tanhril — seniors, juniors, researchers & alumni, one pariyal.",
-    emblemTitle: "Our real emblem — from Instagram",
+    emblemTitle: "Our Emblem",
     emblemDesc:
-      "This is the actual profile picture of @assam_association_mzu (saved as public/insta/logo.jpg — see public/insta/ATTRIBUTION.txt for the scrape method). Red circular seal — “ASSAM ASSOCIATION” on the top arc, “MIZORAM UNIVERSITY” below, jaapi-xorai heritage motif at the centre. It now serves as our navbar, hero badge, footer and favicon.",
+      "Our official emblem — a red circular seal carrying “ASSAM ASSOCIATION” on the top arc and “MIZORAM UNIVERSITY” below. At its heart, the jaapi and xorai honour Assam's heritage of welcome and hospitality, carried with pride from the Brahmaputra valley to the hills of Mizoram.",
     cards: [
       {
         t: "🤝 Who We Are",
@@ -245,9 +245,9 @@ const as: Dict = {
     kicker: "আমাৰ বিষয়ে",
     title: "আইজলত এখন সৰু অসম",
     sub: "মিজোৰাম বিশ্ববিদ্যালয়, তানহ্ৰিলৰ অসমীয়া ছাত্ৰ সমাজ — জ্যেষ্ঠ, কনিষ্ঠ, গৱেষক আৰু প্ৰাক্তন ছাত্ৰ, এক পৰিয়াল।",
-    emblemTitle: "আমাৰ প্ৰকৃত প্ৰতীক — ইনষ্টাগ্ৰামৰ পৰা",
+    emblemTitle: "আমাৰ প্ৰতীক",
     emblemDesc:
-      "এয়া @assam_association_mzu ৰ প্ৰকৃত প্ৰ'ফাইল ছবি (public/insta/logo.jpg ত সংৰক্ষিত — পদ্ধতিৰ বাবে public/insta/ATTRIBUTION.txt চাওক)। ৰঙা ঘূৰণীয়া মোহৰ — ওপৰত “ASSAM ASSOCIATION”, তলত “MIZORAM UNIVERSITY”, মাজত জাপি-শৰাই ঐতিহ্যৰ চিহ্ন। এতিয়া ই আমাৰ নেভবাৰ, হিৰ' বেজ, ফুটাৰ আৰু ফেভিকন।",
+      "আমাৰ চৰকাৰী প্ৰতীক — ৰঙা ঘূৰণীয়া মোহৰ, ওপৰত “ASSAM ASSOCIATION”, তলত “MIZORAM UNIVERSITY”। মাজত জাপি-শৰাই — অসমৰ আতিথ্যৰ ঐতিহ্যৰ চিহ্ন, ব্ৰহ্মপুত্ৰ উপত্যকাৰ পৰা মিজোৰামৰ পাহাৰলৈ গৌৰৱেৰে কঢ়িয়াই অনা।",
     cards: [
       {
         t: "🤝 আমি কোন",
