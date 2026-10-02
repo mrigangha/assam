@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "./Language";
 
 const PDF = "/magazaine/Xasipat-Magazine-AAMZU-2026.pdf";
@@ -10,8 +11,22 @@ export default function Magazine() {
   const [preview, setPreview] = useState(false);
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="bg-white/[0.06] ring-1 ring-white/15 rounded-3xl p-7">
+    <div>
+      <div className="grid md:grid-cols-2 gap-6 items-start">
+        <figure className="card-hover rounded-3xl overflow-hidden ring-1 ring-white/20 bg-black/30">
+          <Image
+            src="/slideshow/Screenshot_2026-10-02_20-24-06.png"
+            alt={t.slides.captions[2]}
+            width={640}
+            height={700}
+            className="w-full h-auto"
+          />
+          <figcaption className="px-4 py-3 text-sm text-amber-100/80">
+            {t.slides.captions[2]}
+          </figcaption>
+        </figure>
+
+        <div className="bg-white/[0.06] ring-1 ring-white/15 rounded-3xl p-7">
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">
               {t.magazine.edition}
@@ -50,6 +65,7 @@ export default function Magazine() {
             </button>
           </div>
           <p className="mt-3 text-xs text-amber-100/50">{t.magazine.note}</p>
+        </div>
       </div>
 
       {preview && (
