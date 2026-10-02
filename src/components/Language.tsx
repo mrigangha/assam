@@ -164,9 +164,6 @@ const en = {
       ["Rongali Bihu Stage", "💃"],
       ["Husori Team", "🥁"],
       ["Freshers 2025", "🎓"],
-      ["Uruka Feast", "🔥"],
-      ["Picnic Day", "🏞️"],
-      ["Farewell Night", "🪔"],
     ] as [string, string][],
   },
   join: {
@@ -358,9 +355,6 @@ const as: Dict = {
       ["ৰঙালী বিহু মঞ্চ", "💃"],
       ["হুঁচৰি দল", "🥁"],
       ["নৱাগত ২০২৫", "🎓"],
-      ["উৰুকা ভোজ", "🔥"],
-      ["বনভোজ", "🏞️"],
-      ["বিদায় নিশা", "🪔"],
     ],
   },
   join: {
