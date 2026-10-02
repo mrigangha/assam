@@ -76,7 +76,7 @@ const en = {
       },
       {
         t: "🌉 What We Do",
-        d: "Freshers' welcome, Bihu festivals, help-desk, blood-donation, sports, food fests, farewell — and friendship with Mizo & other state associations.",
+        d: "Freshers' welcome, Bihu festivals, help-desk, sports, food fests and farewell — all to promote and celebrate Assamese culture in Mizoram, alongside friendship with Mizo & other state associations.",
       },
     ],
   },
@@ -266,7 +266,7 @@ const as: Dict = {
       },
       {
         t: "🌉 আমি কি কৰোঁ",
-        d: "নৱাগত আদৰণি, বিহু উৎসৱ, সহায় কেন্দ্ৰ, ৰক্তদান, খেল, খাদ্য মেলা, বিদায় — আৰু মিজো তথা অন্য ৰাজ্যৰ সন্থাৰ সৈতে বন্ধুত্ব।",
+        d: "নৱাগত আদৰণি, বিহু উৎসৱ, সহায় কেন্দ্ৰ, খেল, খাদ্য মেলা আৰু বিদায় — মিজোৰামত অসমীয়া সংস্কৃতিৰ প্ৰচাৰ আৰু উদযাপনৰ বাবে, লগতে মিজো তথা অন্য ৰাজ্যৰ সন্থাৰ সৈতে বন্ধুত্ব।",
       },
     ],
   },
