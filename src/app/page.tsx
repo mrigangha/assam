@@ -354,11 +354,7 @@ function HomeContent() {
             title={t.gallery.title}
             sub={t.gallery.sub}
           />
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="card-hover col-span-2 row-span-2 relative rounded-3xl overflow-hidden ring-1 ring-black/10 shadow-sm block">
-              <Image src="/insta/post-helpdesk-1.jpg" alt={t.gallery.realAlt} width={640} height={853} className="w-full h-full object-cover" />
-              <span className="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1.5 rounded-full">{t.gallery.realBadge}</span>
-            </a>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {t.gallery.tiles.map(([title, e], i) => (
               <div key={title} className={`card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`}>
                 <div className="text-3xl">{e}</div>
