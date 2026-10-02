@@ -39,7 +39,7 @@ export default function Navbar() {
     { href: "#about", label: t.nav.about },
     { href: "#culture", label: t.nav.culture },
     { href: "#events", label: t.nav.events },
-    { href: "#instagram", label: t.nav.instagram },
+    { href: "#magazine", label: t.nav.instagram },
     { href: "#team", label: t.nav.team },
     { href: "#gallery", label: t.nav.gallery },
     { href: "#join", label: t.nav.join },

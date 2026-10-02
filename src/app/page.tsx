@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import InstaFeed from "@/components/InstaFeed";
+import Magazine from "@/components/Magazine";
 import Slideshow from "@/components/Slideshow";
 import { LanguageProvider, useLang } from "@/components/Language";
 
@@ -150,8 +150,7 @@ function HomeContent() {
     ["#about", t.nav.about],
     ["#culture", t.nav.culture],
     ["#events", t.nav.events],
-    ["#instagram", t.nav.instagram],
-    ["#team", t.nav.team],
+    ["#magazine", t.nav.instagram],    ["#team", t.nav.team],
     ["#gallery", t.nav.gallery],
     ["#join", t.nav.join],
   ];
@@ -179,7 +178,7 @@ function HomeContent() {
                 {t.hero.joinBtn}
               </a>
               <a
-                href="#instagram"
+                href="#magazine"
                 className="px-6 py-3 rounded-full font-semibold bg-white/10 hover:bg-white/20 text-amber-50 ring-1 ring-white/30 transition"
               >
                 {t.hero.feedBtn}
@@ -307,16 +306,16 @@ function HomeContent() {
         </div>
       </section>
 
-      {/* ============ INSTAGRAM LIVE ============ */}
-      <section id="instagram" className="py-20 bg-[#241111] text-amber-50 border-y border-[#D4A017]/30">
+      {/* ============ MAGAZINE ============ */}
+      <section id="magazine" className="py-20 bg-[#241111] text-amber-50 border-y border-[#D4A017]/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
             light
-            kicker={t.insta.kicker}
-            title={t.insta.title}
-            sub={t.insta.sub}
+            kicker={t.magazine.kicker}
+            title={t.magazine.title}
+            sub={t.magazine.sub}
           />
-          <InstaFeed />
+          <Magazine />
         </div>
       </section>
 
