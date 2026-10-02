@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLang, type Lang } from "./Language";
 
-function LangToggle({ compact = false }: { compact?: boolean }) {
+export function LangToggle({ compact = false }: { compact?: boolean }) {
   const { lang, setLang } = useLang();
   return (
     <div

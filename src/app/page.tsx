@@ -156,6 +156,11 @@ function HomeContent() {
     ["#join", t.nav.join],
   ];
 
+  const FOOTER_LINKS: [string, string][] = [
+    ...QUICK_LINKS,
+    ["/song", t.culture.songShort],
+  ];
+
   return (
     <div className="min-h-screen bg-[#FFFBEB]">
       <Navbar />
@@ -282,6 +287,14 @@ function HomeContent() {
                 <p className="text-stone-600 text-[15px] leading-relaxed">{c.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a
+              href="/song"
+              className="inline-block px-7 py-3 rounded-full font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white ring-1 ring-[#D4A017] shadow-lg transition"
+            >
+              {t.culture.songBtn}
+            </a>
           </div>
         </div>
       </section>
@@ -522,7 +535,7 @@ function HomeContent() {
             <div>
               <p className="font-bold mb-3 text-[#E7C873] uppercase tracking-widest text-xs">{t.footer.quick}</p>
               <div className="grid grid-cols-2 gap-1 text-sm">
-                {QUICK_LINKS.map(([h, l]) => (
+                {FOOTER_LINKS.map(([h, l]) => (
                   <a key={h} href={h} className="py-1.5 text-amber-100/80 hover:text-white">{l}</a>
                 ))}
               </div>

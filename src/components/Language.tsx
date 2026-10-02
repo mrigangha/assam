@@ -76,6 +76,8 @@ const en = {
     kicker: "Axomiya Culture",
     title: "What we carry to Mizoram",
     sub: "Four glimpses of Assam we proudly showcase at MZU fests, Virthli & University Week.",
+    songBtn: "🎵 Our Association Song →",
+    songShort: "Song",
     cards: [
       {
         emoji: "🥁",
@@ -131,6 +133,18 @@ const en = {
     cover2Alt: "Magazine page: association song in Assamese",
     cover2Cap: "Association song (সমবেত সংগীত)",
     note: "PDF: public/magazaine/Xasipat-Magazine-AAMZU-2026.pdf. Replace the file to publish a new edition.",
+  },
+  song: {
+    back: "← Back to Home",
+    kicker: "Association Song",
+    title: "Samabet Sangeet",
+    sub: "The association song of Assam Association, Mizoram University — as printed in the Xasipat magazine.",
+    chorus: "Chorus",
+    creditLyrics: "Lyrics",
+    creditTune: "Tune",
+    creditPlan: "Planning",
+    magazineBtn: "📖 Read the Magazine ↗",
+    imageAlt: "Magazine page showing the association song in Assamese",
   },
   team: {
     kicker: "Committee",
@@ -267,6 +281,8 @@ const as: Dict = {
     kicker: "অসমীয়া সংস্কৃতি",
     title: "মিজোৰামলৈ আমি যি লৈ যাওঁ",
     sub: "এমজেডইউ উৎসৱত আমি গৌৰৱেৰে প্ৰদৰ্শন কৰা অসমৰ চাৰিটা ঝলক।",
+    songBtn: "🎵 আমাৰ সন্থাৰ গীত →",
+    songShort: "গীত",
     cards: [
       {
         emoji: "🥁",
@@ -322,6 +338,18 @@ const as: Dict = {
     cover2Alt: "আলোচনীৰ পৃষ্ঠা: অসমীয়াত সন্থাৰ গীত",
     cover2Cap: "সন্থাৰ গীত (সমবেত সংগীত)",
     note: "PDF: public/magazaine/Xasipat-Magazine-AAMZU-2026.pdf। নতুন সংখ্যা প্ৰকাশ কৰিবলৈ ফাইল সলনি কৰক।",
+  },
+  song: {
+    back: "← ঘৰলৈ উভতক",
+    kicker: "সন্থাৰ গীত",
+    title: "সমবেত সংগীত",
+    sub: "অসম সন্থা, মিজোৰাম বিশ্ববিদ্যালয়ৰ সন্থাৰ গীত — ছাছিপাত আলোচনীত প্ৰকাশিত।",
+    chorus: "ধুৱা",
+    creditLyrics: "কথা",
+    creditTune: "সুৰ",
+    creditPlan: "পৰিকল্পনা",
+    magazineBtn: "📖 আলোচনী পঢ়ক ↗",
+    imageAlt: "অসমীয়াত সন্থাৰ গীত দেখুওৱা আলোচনীৰ পৃষ্ঠা",
   },
   team: {
     kicker: "সমিতি",
