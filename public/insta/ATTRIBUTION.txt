@@ -1,0 +1,35 @@
+Scraped from the public Instagram account @assam_association_mzu
+("Assam Association, MZU") on 2026-10-02 for the community website.
+
+Method (no login, only public endpoints):
+1. Handle discovery via Instagram oEmbed:
+   https://www.instagram.com/api/v1/oembed/?url=https://www.instagram.com/p/DYl13kzTHFC/
+   -> author_name: assam_association_mzu
+   -> author_url: https://www.instagram.com/assam_association_mzu/
+2. Logo = og:image of https://www.instagram.com/assam_association_mzu/
+   (profile picture, 100x100). Saved as logo.jpg.
+3. Post image = thumbnail_url from the same oEmbed response (640x853).
+   Saved as post-helpdesk-1.jpg.
+4. Caption/likes from https://www.instagram.com/p/DYl13kzTHFC/embed/captioned/
+   (14 likes at scrape time).
+
+Files:
+- logo.jpg ................ real profile picture / association logo
+  (red circular emblem: "ASSAM ASSOCIATION" / "MIZORAM UNIVERSITY",
+  jaapi-xorai motif centre, ribbon below)
+- post-helpdesk-1.jpg ..... "Admission Help Desk Session 2026-2027" poster
+  (MZU building photo + school-wise coordinator names & phones)
+
+Post: https://www.instagram.com/p/DYl13kzTHFC/
+Profile: https://www.instagram.com/assam_association_mzu/
+Stats at scrape time: 234 Followers, 3 Following, 94 Posts.
+
+Credit: All images belong to Assam Association, Mizoram University.
+Used here for their own community website. Full live feed via official
+Instagram embeds in src/components/InstaFeed.tsx.
+
+Note: Instagram login wall prevents scraping the full 94-post feed
+anonymously (web_profile_info API returns require_login, profile pages
+are JS shells, third-party viewers are Cloudflare-walled). To add more
+photos: open the profile, save images, drop into public/insta/ and add
+shortcodes to InstaFeed.tsx POSTS.
