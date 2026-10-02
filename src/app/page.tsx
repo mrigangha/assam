@@ -371,32 +371,48 @@ function HomeContent() {
             {t.gallery.tiles.map(([title, e], i) => {
               const photo =
                 i === 0
-                  ? "/slideshow/Screenshot_2026-10-02_20-24-06.png"
-                  : i === 2
-                    ? "/freshers.png"
-                    : null;
+                  ? { src: "/slideshow/Screenshot_2026-10-02_20-24-06.png", link: DRIVE_FOLDER }
+                  : i === 1
+                    ? { src: "/hasuri.png", link: null as string | null }
+                    : i === 2
+                      ? { src: "/freshers.png", link: DRIVE_FOLDER }
+                      : null;
               if (photo) {
-                return (
-                  <a
-                    key={title}
-                    href={DRIVE_FOLDER}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="card-hover aspect-square rounded-3xl overflow-hidden relative shadow-sm ring-1 ring-black/10 block"
-                  >
+                const inner = (
+                  <>
                     <Image
-                      src={photo}
+                      src={photo.src}
                       alt={title}
                       fill
                       sizes="(max-width: 1024px) 50vw, 25vw"
                       className="object-cover"
                     />
-                    <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">↗ Drive</span>
+                    {photo.link && (
+                      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">↗ Drive</span>
+                    )}
                     <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pt-8 pb-4 text-white">
                       <span className="font-semibold block">{title}</span>
                       <span className="text-xs text-white/70">{t.gallery.assoc}</span>
                     </span>
+                  </>
+                );
+                return photo.link ? (
+                  <a
+                    key={title}
+                    href={photo.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="card-hover aspect-square rounded-3xl overflow-hidden relative shadow-sm ring-1 ring-black/10 block"
+                  >
+                    {inner}
                   </a>
+                ) : (
+                  <div
+                    key={title}
+                    className="card-hover aspect-square rounded-3xl overflow-hidden relative shadow-sm ring-1 ring-black/10"
+                  >
+                    {inner}
+                  </div>
                 );
               }
               const cls = `card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`;
