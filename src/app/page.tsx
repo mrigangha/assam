@@ -8,6 +8,7 @@ import { LanguageProvider, useLang } from "@/components/Language";
 
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
 const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
+const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1Gw_AePnKZDdMpu8nSOPH2xBXC9PMv-1B";
 
 function SectionHeading({
   kicker,
@@ -367,13 +368,28 @@ function HomeContent() {
             sub={t.gallery.sub}
           />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-            {t.gallery.tiles.map(([title, e], i) => (
-              <div key={title} className={`card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`}>
-                <div className="text-3xl">{e}</div>
-                <p className="font-semibold mt-1">{title}</p>
-                <p className="text-xs text-white/70">{t.gallery.assoc}</p>
-              </div>
-            ))}
+            {t.gallery.tiles.map(([title, e], i) => {
+              const cls = `card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10 relative`;
+              const inner = (
+                <>
+                  {i === 0 && (
+                    <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">↗ Drive</span>
+                  )}
+                  <div className="text-3xl">{e}</div>
+                  <p className="font-semibold mt-1">{title}</p>
+                  <p className="text-xs text-white/70">{t.gallery.assoc}</p>
+                </>
+              );
+              return i === 0 ? (
+                <a key={title} href={DRIVE_FOLDER} target="_blank" rel="noreferrer" className={cls}>
+                  {inner}
+                </a>
+              ) : (
+                <div key={title} className={cls}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
