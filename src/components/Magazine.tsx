@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLang } from "./Language";
 
 const PDF = "/magazaine/Xasipat-Magazine-AAMZU-2026.pdf";
+const DRIVE = "https://drive.google.com/drive/folders/1Gw_AePnKZDdMpu8nSOPH2xBXC9PMv-1B";
 
 export default function Magazine() {
   const { t } = useLang();
@@ -63,6 +64,14 @@ export default function Magazine() {
             >
               {preview ? t.magazine.closePreview : t.magazine.previewBtn}
             </button>
+            <a
+              href={DRIVE}
+              target="_blank"
+              rel="noreferrer"
+              className="px-5 py-2.5 rounded-full ring-1 ring-[#D4A017]/70 text-sm font-semibold text-[#E7C873] hover:bg-white/10 transition"
+            >
+              {t.magazine.driveBtn}
+            </a>
           </div>
           <p className="mt-3 text-xs text-amber-100/50">{t.magazine.note}</p>
         </div>
