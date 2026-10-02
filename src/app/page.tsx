@@ -222,8 +222,7 @@ function HomeContent() {
       <div className="bg-[#9E1B1E] text-amber-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
           <p>
-            📢 {t.notice.text}{" "}
-            <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.notice.post}</a>.
+            📢 {t.notice.text}
           </p>
           <a href="#join" className="shrink-0 bg-[#FFFBEB] text-[#9E1B1E] font-semibold px-4 py-1.5 rounded-full hover:bg-white transition">
             {t.notice.btn}

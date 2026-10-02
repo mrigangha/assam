@@ -47,8 +47,7 @@ const en = {
     credit: "📸 Assam Association, MZU",
   },
   notice: {
-    text: "Admission Help-Desk 2026–27 open! Real coordinators below — scraped from",
-    post: "this Instagram post",
+    text: "Admission Help-Desk 2026–27 open! Real coordinators below.",
     btn: "Get Help →",
   },
   about: {
@@ -231,8 +230,7 @@ const as: Dict = {
     credit: "📸 অসম সন্থা, এমজেডইউ",
   },
   notice: {
-    text: "ভৰ্তি সহায় কেন্দ্ৰ ২০২৬–২৭ মুকলি! তলত প্ৰকৃত সমন্বয়কসকল —",
-    post: "এই ইনষ্টাগ্ৰাম প'ষ্টৰ পৰা লোৱা",
+    text: "ভৰ্তি সহায় কেন্দ্ৰ ২০২৬–২৭ মুকলি! তলত প্ৰকৃত সমন্বয়কসকল।",
     btn: "সহায় লওক →",
   },
   about: {
