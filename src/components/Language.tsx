@@ -140,7 +140,6 @@ const en = {
       ["General Secretary", "General Secretary", "G", "Planning, meetings, records & day-to-day execution."],
       ["Cultural Secy.", "Cultural Secretary", "C", "Bihu choreography, music, dress & stage decoration."],
       ["Finance Secy.", "Treasurer", "F", "Membership, budgeting & transparent accounts."],
-      ["Help-Desk Lead", "Admission Help-Desk", "H", "Freshers' first contact — see real coordinators below."],
     ] as [string, string, string, string][],
   },
   gallery: {
@@ -352,7 +351,6 @@ const as: Dict = {
       ["সাধাৰণ সম্পাদক", "সাধাৰণ সম্পাদক", "সা", "পৰিকল্পনা, সভা, নথি আৰু দৈনন্দিন কাম-কাজ।"],
       ["সাংস্কৃতিক সম্পাদক", "সাংস্কৃতিক সম্পাদক", "সং", "বিহু নৃত্য পৰিচালনা, সংগীত, সাজপাৰ আৰু মঞ্চ সজ্জা।"],
       ["কোষাধ্যক্ষ", "কোষাধ্যক্ষ", "কো", "সদস্যপদ, বাজেট আৰু স্বচ্ছ হিচাপ।"],
-      ["সহায় কেন্দ্ৰৰ মুৰব্বী", "ভৰ্তি সহায় কেন্দ্ৰ", "স", "নৱাগতৰ প্ৰথম যোগাযোগ — তলত প্ৰকৃত সমন্বয়কসকল চাওক।"],
     ],
   },
   gallery: {
