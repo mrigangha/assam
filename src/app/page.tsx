@@ -327,12 +327,28 @@ function HomeContent() {
             title={t.team.title}
             sub={t.team.sub}
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <figure className="card-hover relative rounded-3xl overflow-hidden ring-1 ring-[#9E1B1E]/15 shadow-sm mb-6 bg-white">
+            <Image src="/team/group-2025-26.jpg" alt={t.team.groupCap} width={920} height={460} className="w-full h-auto" />
+            <figcaption className="px-5 py-3 text-sm font-semibold text-stone-700 border-t border-stone-200">
+              📸 {t.team.groupCap}
+            </figcaption>
+          </figure>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {t.team.members.map((m) => (
-              <div key={m[1]} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
-                <div className="w-16 h-16 mx-auto rounded-full bg-[#9E1B1E] text-white font-serif-display text-2xl font-bold flex items-center justify-center ring-4 ring-[#D4A017]/40">
-                  {m[2]}
-                </div>
+              <div key={m[0] + m[1]} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
+                {m[4] ? (
+                  <Image
+                    src={m[4]}
+                    alt={`${m[0]} — ${m[1]}`}
+                    width={128}
+                    height={128}
+                    className="w-16 h-16 mx-auto rounded-full object-cover object-top ring-4 ring-[#D4A017]/40"
+                  />
+                ) : (
+                  <div className="w-16 h-16 mx-auto rounded-full bg-[#9E1B1E] text-white font-serif-display text-2xl font-bold flex items-center justify-center ring-4 ring-[#D4A017]/40">
+                    {m[2]}
+                  </div>
+                )}
                 <h3 className="mt-3 font-bold">{m[0]}</h3>
                 <p className="text-xs uppercase tracking-widest text-[#9E1B1E] font-bold">{m[1]}</p>
                 <p className="mt-2 text-sm text-stone-600">{m[3]}</p>
