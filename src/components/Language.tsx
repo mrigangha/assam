@@ -102,7 +102,7 @@ const en = {
       },
       {
         emoji: "🍚",
-        title: "Axomiya Khana",
+        title: "Axomiya Khaidya",
         desc: "Pitha-laru, ladu, kumol chaul, masor tenga, khar & bamboo-shoot. Our food stalls & picnic are the most loved at MZU fests.",
       },
     ],
@@ -292,7 +292,7 @@ const as: Dict = {
       },
       {
         emoji: "🍚",
-        title: "অসমীয়া খানা",
+        title: "অসমীয়া খাদ্য",
         desc: "পিঠা-লাৰু, লাড়ু, কোমল চাউল, মাছৰ টেঙা, খাৰ আৰু বাঁহগাজ। এমজেডইউ উৎসৱত আমাৰ খাদ্য বিপণী আৰু বনভোজ আটাইতকৈ জনপ্ৰিয়।",
       },
     ],
