@@ -164,10 +164,6 @@ function HomeContent() {
       <section id="home" className="hero-pattern relative overflow-hidden pt-28 pb-0 text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-14 grid lg:grid-cols-2 gap-10 items-center text-left">
           <div>
-            <div className="inline-flex items-center gap-2 bg-white/10 ring-1 ring-[#D4A017]/60 text-[#E7C873] text-xs sm:text-sm px-4 py-1.5 rounded-full mb-5">
-              <Image src="/insta/logo.jpg" alt="logo" width={20} height={20} className="rounded-full" />
-              {t.hero.badge}
-            </div>
             <h1 className="font-serif-display text-3xl sm:text-5xl font-bold text-amber-50 leading-[1.1]">
               {t.hero.title1}
               <span className="block text-[#E7C873]">{t.hero.title2}</span>
@@ -196,14 +192,6 @@ function HomeContent() {
               >
                 {t.hero.instaBtn}
               </a>
-            </div>
-            <div className="mt-8 grid grid-cols-3 max-w-md gap-4">
-              {t.hero.stats.map(([n, l]) => (
-                <div key={l} className="bg-white/5 ring-1 ring-white/15 rounded-2xl py-3 text-center">
-                  <p className="text-2xl font-bold text-[#E7C873]">{n}</p>
-                  <p className="text-xs uppercase tracking-widest text-amber-100/70">{l}</p>
-                </div>
-              ))}
             </div>
           </div>
 
