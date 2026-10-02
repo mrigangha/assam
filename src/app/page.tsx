@@ -185,12 +185,9 @@ export default function Home() {
               <Image src="/insta/logo.jpg" alt="logo" width={20} height={20} className="rounded-full" />
               @assam_association_mzu • 234 followers • 94 posts
             </div>
-            <h1 className="font-serif-display text-4xl sm:text-6xl font-bold text-amber-50 leading-[1.05]">
-              Joi Ai Axom
-              <span className="block text-[#E7C873]">from the Hills</span>
-              <span className="block text-2xl sm:text-3xl mt-2 font-normal text-amber-100/90">
-                of Mizoram.
-              </span>
+            <h1 className="font-serif-display text-3xl sm:text-5xl font-bold text-amber-50 leading-[1.1]">
+              Assam Association
+              <span className="block text-[#E7C873]">Mizoram University</span>
             </h1>
             <p className="mt-5 text-amber-100/85 text-base sm:text-lg leading-relaxed max-w-xl">
               <strong className="text-white">Assam Association, Mizoram University</strong> —
