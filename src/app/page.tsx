@@ -369,7 +369,13 @@ function HomeContent() {
           />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {t.gallery.tiles.map(([title, e], i) => {
-              if (i === 0) {
+              const photo =
+                i === 0
+                  ? "/slideshow/Screenshot_2026-10-02_20-24-06.png"
+                  : i === 2
+                    ? "/freshers.png"
+                    : null;
+              if (photo) {
                 return (
                   <a
                     key={title}
@@ -379,7 +385,7 @@ function HomeContent() {
                     className="card-hover aspect-square rounded-3xl overflow-hidden relative shadow-sm ring-1 ring-black/10 block"
                   >
                     <Image
-                      src="/slideshow/Screenshot_2026-10-02_20-24-06.png"
+                      src={photo}
                       alt={title}
                       fill
                       sizes="(max-width: 1024px) 50vw, 25vw"
