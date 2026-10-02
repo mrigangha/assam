@@ -5,8 +5,6 @@ import Navbar from "@/components/Navbar";
 import InstaFeed from "@/components/InstaFeed";
 import Slideshow from "@/components/Slideshow";
 import { LanguageProvider, useLang } from "@/components/Language";
-import { AdminProvider, useSiteContent } from "@/components/AdminStore";
-import AdminPanel from "@/components/AdminPanel";
 
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
 const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
@@ -146,7 +144,6 @@ const GALLERY_GRADS = [
 
 function HomeContent() {
   const { t } = useLang();
-  const { members, events } = useSiteContent(t);
 
   const QUICK_LINKS: [string, string][] = [
     ["#home", t.nav.home],
@@ -157,7 +154,6 @@ function HomeContent() {
     ["#team", t.nav.team],
     ["#gallery", t.nav.gallery],
     ["#join", t.nav.join],
-    ["#admin", t.nav.admin],
   ];
 
   return (
@@ -300,11 +296,11 @@ function HomeContent() {
             sub={t.events.sub}
           />
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {events.map((e) => (
-                <div key={e.title} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
-                  <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">{e.date}</span>
-                  <h3 className="font-bold text-lg mt-2">{e.title}</h3>
-                  <p className="text-amber-100/75 text-[15px]">{e.desc}</p>
+              {t.events.items.map(([d, title, x]) => (
+                <div key={title} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
+                  <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">{d}</span>
+                  <h3 className="font-bold text-lg mt-2">{title}</h3>
+                  <p className="text-amber-100/75 text-[15px]">{x}</p>
                 </div>
               ))}
             </div>
@@ -333,24 +329,14 @@ function HomeContent() {
             sub={t.team.sub}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {members.map((m) => (
-              <div key={m.role + m.name} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
+            {t.team.members.map((m) => (
+              <div key={m[1]} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
                 <div className="w-16 h-16 mx-auto rounded-full bg-[#9E1B1E] text-white font-serif-display text-2xl font-bold flex items-center justify-center ring-4 ring-[#D4A017]/40">
-                  {m.initial}
+                  {m[2]}
                 </div>
-                <h3 className="mt-3 font-bold">{m.name}</h3>
-                <p className="text-xs uppercase tracking-widest text-[#9E1B1E] font-bold">{m.role}</p>
-                <p className="mt-2 text-sm text-stone-600">{m.desc}</p>
-                {m.link && (
-                  <a
-                    href={m.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block mt-3 text-sm font-semibold text-[#9E1B1E] underline underline-offset-2 hover:text-[#7f1414]"
-                  >
-                    {t.admin.profileLink}
-                  </a>
-                )}
+                <h3 className="mt-3 font-bold">{m[0]}</h3>
+                <p className="text-xs uppercase tracking-widest text-[#9E1B1E] font-bold">{m[1]}</p>
+                <p className="mt-2 text-sm text-stone-600">{m[3]}</p>
               </div>
             ))}
           </div>
@@ -446,18 +432,6 @@ function HomeContent() {
         </div>
       </section>
 
-      {/* ============ ADMIN ============ */}
-      <section id="admin" className="py-20 bg-[#FFF7E6] border-y border-[#D4A017]/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <SectionHeading
-            kicker={t.admin.kicker}
-            title={t.admin.title}
-            sub={t.admin.sub}
-          />
-          <AdminPanel />
-        </div>
-      </section>
-
       {/* ============ CONTACT / FOOTER ============ */}
       <section id="contact" className="bg-[#1a0f0f] text-amber-50 pt-16 pb-8 relative">
         <div className="absolute top-0 left-0 right-0 h-2 gamosa-strip" />
@@ -512,9 +486,7 @@ function HomeContent() {
 export default function Home() {
   return (
     <LanguageProvider>
-      <AdminProvider>
-        <HomeContent />
-      </AdminProvider>
+      <HomeContent />
     </LanguageProvider>
   );
 }

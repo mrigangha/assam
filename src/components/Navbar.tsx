@@ -43,7 +43,6 @@ export default function Navbar() {
     { href: "#team", label: t.nav.team },
     { href: "#gallery", label: t.nav.gallery },
     { href: "#join", label: t.nav.join },
-    { href: "#admin", label: t.nav.admin },
   ];
 
   useEffect(() => {
