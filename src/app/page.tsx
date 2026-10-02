@@ -369,24 +369,36 @@ function HomeContent() {
           />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {t.gallery.tiles.map(([title, e], i) => {
-              const cls = `card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10 relative`;
-              const inner = (
-                <>
-                  {i === 0 && (
+              if (i === 0) {
+                return (
+                  <a
+                    key={title}
+                    href={DRIVE_FOLDER}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="card-hover aspect-square rounded-3xl overflow-hidden relative shadow-sm ring-1 ring-black/10 block"
+                  >
+                    <Image
+                      src="/slideshow/Screenshot_2026-10-02_20-24-06.png"
+                      alt={title}
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      className="object-cover"
+                    />
                     <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">↗ Drive</span>
-                  )}
+                    <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pt-8 pb-4 text-white">
+                      <span className="font-semibold block">{title}</span>
+                      <span className="text-xs text-white/70">{t.gallery.assoc}</span>
+                    </span>
+                  </a>
+                );
+              }
+              const cls = `card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`;
+              return (
+                <div key={title} className={cls}>
                   <div className="text-3xl">{e}</div>
                   <p className="font-semibold mt-1">{title}</p>
                   <p className="text-xs text-white/70">{t.gallery.assoc}</p>
-                </>
-              );
-              return i === 0 ? (
-                <a key={title} href={DRIVE_FOLDER} target="_blank" rel="noreferrer" className={cls}>
-                  {inner}
-                </a>
-              ) : (
-                <div key={title} className={cls}>
-                  {inner}
                 </div>
               );
             })}
