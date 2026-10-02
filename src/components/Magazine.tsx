@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useLang } from "./Language";
 
 const PDF = "/magazaine/Xasipat-Magazine-AAMZU-2026.pdf";
@@ -11,36 +10,8 @@ export default function Magazine() {
   const [preview, setPreview] = useState(false);
 
   return (
-    <div>
-      <div className="grid md:grid-cols-2 gap-6 items-start">
-        <div className="grid grid-cols-2 gap-4">
-          <figure className="card-hover rounded-3xl overflow-hidden ring-1 ring-white/20 bg-black/30">
-            <Image
-              src="/magazaine/magazine-committee.jpg"
-              alt={t.magazine.cover1Alt}
-              width={640}
-              height={800}
-              className="w-full h-auto"
-            />
-            <figcaption className="px-4 py-3 text-sm text-amber-100/80">
-              {t.magazine.cover1Cap}
-            </figcaption>
-          </figure>
-          <figure className="card-hover rounded-3xl overflow-hidden ring-1 ring-white/20 bg-black/30">
-            <Image
-              src="/magazaine/magazine-song.jpg"
-              alt={t.magazine.cover2Alt}
-              width={640}
-              height={800}
-              className="w-full h-auto"
-            />
-            <figcaption className="px-4 py-3 text-sm text-amber-100/80">
-              {t.magazine.cover2Cap}
-            </figcaption>
-          </figure>
-        </div>
-
-        <div className="bg-white/[0.06] ring-1 ring-white/15 rounded-3xl p-7">
+    <div className="max-w-2xl mx-auto">
+      <div className="bg-white/[0.06] ring-1 ring-white/15 rounded-3xl p-7">
           <div className="flex flex-wrap gap-2">
             <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">
               {t.magazine.edition}
@@ -79,7 +50,6 @@ export default function Magazine() {
             </button>
           </div>
           <p className="mt-3 text-xs text-amber-100/50">{t.magazine.note}</p>
-        </div>
       </div>
 
       {preview && (
