@@ -1,0 +1,420 @@
+"use client";
+
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
+
+export type Lang = "en" | "as";
+
+const en = {
+  nav: {
+    brand1: "Assam Association",
+    brand2: "Mizoram University",
+    home: "Home",
+    about: "About",
+    culture: "Culture",
+    events: "Events",
+    instagram: "Instagram",
+    team: "Team",
+    gallery: "Gallery",
+    join: "Join Us",
+    instaBtn: "Instagram ↗",
+    menu: "Toggle menu",
+  },
+  hero: {
+    badge: "@assam_association_mzu • 234 followers • 94 posts",
+    title1: "Assam Association",
+    title2: "Mizoram University",
+    para: "Home away from home for Assamese students at MZU. The logo & photos on this site are from our real Instagram — freshers, Bihu in Aizawl, Admission Help-Desk and Axomiya culture, all here.",
+    joinBtn: "Join the Family →",
+    feedBtn: "Real Instagram Feed",
+    instaBtn: "📸 @assam_association_mzu",
+    stats: [
+      ["94", "IG Posts"],
+      ["234", "Followers"],
+      ["10", "Help-Desk Schools"],
+    ] as [string, string][],
+    instaLine: "Moments from our Instagram",
+    follow: "follow ↗",
+  },
+  slides: {
+    captions: [
+      "Shraddhanjali to Zubeen Garg — tribute by the association",
+      "Memorial with gamosa, diyas & flowers",
+      "Bohagi Utsav — Bihu dance on the MZU stage",
+      "Honoured guests welcomed with gamosa",
+      "Tree plantation drive",
+      "Certificate felicitation — team photo",
+    ],
+    credit: "📸 Assam Association, MZU",
+  },
+  notice: {
+    text: "Admission Help-Desk 2026–27 open! Real coordinators below — scraped from",
+    post: "this Instagram post",
+    btn: "Get Help →",
+  },
+  about: {
+    kicker: "About Us",
+    title: "A small Assam in Aizawl",
+    sub: "The Assamese students' community at Mizoram University, Tanhril — seniors, juniors, researchers & alumni, one pariyal.",
+    emblemTitle: "Our real emblem — from Instagram",
+    emblemDesc:
+      "This is the actual profile picture of @assam_association_mzu (saved as public/insta/logo.jpg — see public/insta/ATTRIBUTION.txt for the scrape method). Red circular seal — “ASSAM ASSOCIATION” on the top arc, “MIZORAM UNIVERSITY” below, jaapi-xorai heritage motif at the centre. It now serves as our navbar, hero badge, footer and favicon.",
+    emblemStats: "234 Followers • 3 Following • 94 Posts (at scrape time, Oct 2026).",
+    cards: [
+      {
+        t: "🤝 Who We Are",
+        d: "Every Assamese student admitted to MZU automatically becomes part of the family — from Dhemaji to Dhubri, Silchar to Sivasagar. We bridge home and hostel.",
+      },
+      {
+        t: "🎯 Our Mission",
+        d: "No Axomiya should feel alone in Mizoram. Support in admission, accommodation, language, health & homesickness — plus a vibrant cultural life.",
+      },
+      {
+        t: "🌉 What We Do",
+        d: "Freshers' welcome, Bihu festivals, help-desk, blood-donation, sports, food fests, farewell — and friendship with Mizo & other state associations.",
+      },
+    ],
+  },
+  culture: {
+    kicker: "Axomiya Culture",
+    title: "What we carry to Mizoram",
+    sub: "Four glimpses of Assam we proudly showcase at MZU fests, Virthli & University Week.",
+    cards: [
+      {
+        emoji: "🥁",
+        title: "Bihu – Soul of Assam",
+        desc: "Rongali, Kongali & Bhogali Bihu. Dhol, pepa, gogona, hucari and mukoli bihu dance — we celebrate it together in Aizawl every spring.",
+      },
+      {
+        emoji: "🧣",
+        title: "Gamosa & Mekhela",
+        desc: "The white-red gamosa is our pride — a symbol of respect, love and identity. Worn at every welcome, felicitation and Bihu stage.",
+      },
+      {
+        emoji: "🎩",
+        title: "Jaapi & Xorai",
+        desc: "The bamboo jaapi hat and bell-metal xorai tray — heritage of hospitality you will also spot in our real association logo.",
+      },
+      {
+        emoji: "🍚",
+        title: "Axomiya Khana",
+        desc: "Pitha-laru, ladu, kumol chaul, masor tenga, khar & bamboo-shoot. Our food stalls & picnic are the most loved at MZU fests.",
+      },
+    ],
+  },
+  events: {
+    kicker: "Scraped from Instagram",
+    title: "Featured: Admission Help-Desk 2026–27",
+    sub: "Real poster + caption pulled from instagram.com/p/DYl13kzTHFC/ — 14 likes. The association's help-desk assigns coordinators per MZU school.",
+    scraped: "Scraped from Instagram • 14 likes •",
+    openPost: "open post ↗",
+    posterCaption:
+      "“The Assam Association, Mizoram University, has initiated an Admission Help Desk to assist students seeking admission to different departments of Mizoram University. Students can directly contact the respective coordinators for: admission process • department info • hostel facilities • campus life and other guidance.”",
+    items: [
+      ["April", "Rongali Bihu Celebration", "Our biggest night — husori, bihu dance, pitha feast & cultural exchange with Mizo friends."],
+      ["Aug – Sep", "Freshers' Meet & Welcome", "Aadarani ceremony for new Assamese students with gamosa, guidance & city tour."],
+      ["Oct", "Picnic & Sports Day", "Lakeside picnic, cricket/football friendlies with other state associations."],
+      ["Jan", "Bhogali Bihu / Uruka Feast", "Community feast & bonfire night, Mizoram edition."],
+      ["May", "Farewell & Biday", "Gamosa & xorai honour for graduating seniors."],
+    ] as [string, string, string][],
+  },
+  insta: {
+    kicker: "Live Feed",
+    title: "Instagram — @assam_association_mzu",
+    sub: "Official embeds load live from Instagram. Saved copies in public/insta/ keep the site working offline.",
+    caption:
+      "Admission Help Desk (Session 2026–2027) — coordinators for every MZU school + hostel & campus guidance.",
+    live: "Live from Instagram",
+    para: "94 posts • 234 followers (Oct 2026). Bihu nights, freshers' meets, picnics, farewells & help-desks — the full story lives on Instagram. This embedded post loads live from Instagram; the photos saved under public/insta/ are scraped copies so the site works even offline.",
+    follow: "Follow on Instagram ↗",
+    openPost: "Open Help-Desk post ↗",
+    note: "To show more posts here, add their shortcodes in src/components/InstaFeed.tsx → POSTS.",
+    viewPost: "View this post on Instagram",
+  },
+  team: {
+    kicker: "Committee",
+    title: "Meet the Team",
+    sub: "Elected student volunteers. For the current committee, check Instagram highlights — or send names via DM to update this page.",
+    members: [
+      ["President", "President", "P", "Leads the association & represents us in MZU student forums."],
+      ["Vice President", "Vice President", "V", "Supports events, hostels & inter-association coordination."],
+      ["General Secretary", "General Secretary", "G", "Planning, meetings, records & day-to-day execution."],
+      ["Cultural Secy.", "Cultural Secretary", "C", "Bihu choreography, music, dress & stage decoration."],
+      ["Finance Secy.", "Treasurer", "F", "Membership, budgeting & transparent accounts."],
+      ["Help-Desk Lead", "Admission Help-Desk", "H", "Freshers' first contact — see real coordinators below."],
+    ] as [string, string, string, string][],
+  },
+  gallery: {
+    kicker: "Memories",
+    title: "Gallery",
+    sub: "First photo is scraped from Instagram; the rest are placeholders — drop real fest photos into public/gallery/ to fill the wall.",
+    realBadge: "📸 Real IG post • Help-Desk 2026–27 ↗",
+    realAlt: "Scraped from Instagram: Admission Help Desk 2026-2027 poster",
+    assoc: "Assam Association • MZU",
+    tiles: [
+      ["Rongali Bihu Stage", "💃"],
+      ["Husori Team", "🥁"],
+      ["Freshers 2025", "🎓"],
+      ["Uruka Feast", "🔥"],
+      ["Picnic Day", "🏞️"],
+      ["Farewell Night", "🪔"],
+    ] as [string, string][],
+  },
+  join: {
+    kicker: "Join Us",
+    title: "New to MZU? Call your senior.",
+    sub: "Real school-wise coordinators transcribed from the Instagram Help-Desk poster. Tap a number to call.",
+    deskTitle: "🆘 Admission Help-Desk — real contacts",
+    source: "Source:",
+    formTitle: "📝 Membership Form (demo)",
+    form: {
+      name: "Full name",
+      dept: "Department",
+      phone: "Phone / WhatsApp",
+      district: "Home district in Assam",
+      btn: "Request to Join →",
+      alert: "Dhanyabad! This is a demo form — connect it to Google Forms / WhatsApp to go live.",
+    },
+    supportTitle: "🙏 Support Us",
+    supportDesc: "Bihu stage, sound, gamosa for freshers & feast — all run on small contributions.",
+    donate: "Donate",
+    dm: "DM on Instagram",
+  },
+  footer: {
+    quick: "Quick Links",
+    insta: "Instagram",
+    profileBtn: "📸 @assam_association_mzu",
+    postBtn: "📌 Help-Desk post",
+    stats: "@assam_association_mzu • 234 followers • 94 posts",
+    credit:
+      "Logo & poster scraped from the public profile via oEmbed/embed (see public/insta/ATTRIBUTION.txt). Images © Assam Association, MZU. Full 94-post feed needs login — embeds above stay live automatically.",
+    rights: "Assam Association, Mizoram University • Made with ♥ in Aizawl",
+    tag: "জয় আই অসম • Next.js single-page site • Scroll to explore ↑",
+  },
+};
+
+export type Dict = typeof en;
+
+const as: Dict = {
+  nav: {
+    brand1: "অসম সন্থা",
+    brand2: "মিজোৰাম বিশ্ববিদ্যালয়",
+    home: "ঘৰ",
+    about: "আমাৰ বিষয়ে",
+    culture: "সংস্কৃতি",
+    events: "অনুষ্ঠান",
+    instagram: "ইনষ্টাগ্ৰাম",
+    team: "সমিতি",
+    gallery: "গেলাৰী",
+    join: "যোগদান",
+    instaBtn: "ইনষ্টাগ্ৰাম ↗",
+    menu: "মেনু খোলক",
+  },
+  hero: {
+    badge: "@assam_association_mzu • ২৩৪ অনুসৰণকাৰী • ৯৪ পোষ্ট",
+    title1: "অসম সন্থা",
+    title2: "মিজোৰাম বিশ্ববিদ্যালয়",
+    para: "এমজেডইউৰ অসমীয়া ছাত্ৰ-ছাত্ৰীৰ বাবে ঘৰৰ দৰে আপোন ঠাই। এই ৱেবছাইটৰ ল'গ' আৰু ফটো আমাৰ প্ৰকৃত ইনষ্টাগ্ৰামৰ পৰা লোৱা — নৱাগত আদৰণি, আইজলত বিহু, ভৰ্তি সহায় কেন্দ্ৰ আৰু অসমীয়া সংস্কৃতি, সকলো ইয়াতে।",
+    joinBtn: "পৰিয়ালত যোগ দিয়ক →",
+    feedBtn: "প্ৰকৃত ইনষ্টাগ্ৰাম ফিড",
+    instaBtn: "📸 @assam_association_mzu",
+    stats: [
+      ["৯৪", "ইনষ্টা পোষ্ট"],
+      ["২৩৪", "অনুসৰণকাৰী"],
+      ["১০", "সহায় কেন্দ্ৰৰ বিদ্যালয়"],
+    ],
+    instaLine: "আমাৰ ইনষ্টাগ্ৰামৰ মুহূৰ্ত",
+    follow: "অনুসৰণ ↗",
+  },
+  slides: {
+    captions: [
+      "জুবিন গাৰ্গলৈ শ্ৰদ্ধাঞ্জলি — সন্থাৰ তৰফৰ পৰা",
+      "গামোচা, চাকি আৰু ফুলেৰে স্মৃতিচাৰণ",
+      "ব'হাগী উৎসৱ — এমজেডইউ মঞ্চত বিহু নৃত্য",
+      "গামোচাৰে সম্বৰ্ধিত অতিথিসকল",
+      "গছপুলি ৰোপণ অভিযান",
+      "প্ৰমাণপত্ৰ সম্বৰ্ধনা — দলীয় ফটো",
+    ],
+    credit: "📸 অসম সন্থা, এমজেডইউ",
+  },
+  notice: {
+    text: "ভৰ্তি সহায় কেন্দ্ৰ ২০২৬–২৭ মুকলি! তলত প্ৰকৃত সমন্বয়কসকল —",
+    post: "এই ইনষ্টাগ্ৰাম প'ষ্টৰ পৰা লোৱা",
+    btn: "সহায় লওক →",
+  },
+  about: {
+    kicker: "আমাৰ বিষয়ে",
+    title: "আইজলত এখন সৰু অসম",
+    sub: "মিজোৰাম বিশ্ববিদ্যালয়, তানহ্ৰিলৰ অসমীয়া ছাত্ৰ সমাজ — জ্যেষ্ঠ, কনিষ্ঠ, গৱেষক আৰু প্ৰাক্তন ছাত্ৰ, এক পৰিয়াল।",
+    emblemTitle: "আমাৰ প্ৰকৃত প্ৰতীক — ইনষ্টাগ্ৰামৰ পৰা",
+    emblemDesc:
+      "এয়া @assam_association_mzu ৰ প্ৰকৃত প্ৰ'ফাইল ছবি (public/insta/logo.jpg ত সংৰক্ষিত — পদ্ধতিৰ বাবে public/insta/ATTRIBUTION.txt চাওক)। ৰঙা ঘূৰণীয়া মোহৰ — ওপৰত “ASSAM ASSOCIATION”, তলত “MIZORAM UNIVERSITY”, মাজত জাপি-শৰাই ঐতিহ্যৰ চিহ্ন। এতিয়া ই আমাৰ নেভবাৰ, হিৰ' বেজ, ফুটাৰ আৰু ফেভিকন।",
+    emblemStats: "২৩৪ অনুসৰণকাৰী • ৩ অনুসৰণ • ৯৪ পোষ্ট (অক্টোবৰ ২০২৬ত লোৱা)।",
+    cards: [
+      {
+        t: "🤝 আমি কোন",
+        d: "এমজেডইউত ভৰ্তি হোৱা প্ৰতিজন অসমীয়া ছাত্ৰই এই পৰিয়ালৰ অংশ — ধেমাজিৰ পৰা ধুবুৰীলৈ, শিলচৰৰ পৰা শিৱসাগৰলৈ। আমি ঘৰ আৰু ছাত্ৰাবাসৰ সেতু।",
+      },
+      {
+        t: "🎯 আমাৰ লক্ষ্য",
+        d: "মিজোৰামত কোনো অসমীয়াই অকলশৰীয়া অনুভৱ কৰিব নালাগে। ভৰ্তি, থকা-খোৱা, ভাষা, স্বাস্থ্য আৰু ঘৰৰ মনত পৰাত সহায় — লগতে জীৱন্ত সাংস্কৃতিক জীৱন।",
+      },
+      {
+        t: "🌉 আমি কি কৰোঁ",
+        d: "নৱাগত আদৰণি, বিহু উৎসৱ, সহায় কেন্দ্ৰ, ৰক্তদান, খেল, খাদ্য মেলা, বিদায় — আৰু মিজো তথা অন্য ৰাজ্যৰ সন্থাৰ সৈতে বন্ধুত্ব।",
+      },
+    ],
+  },
+  culture: {
+    kicker: "অসমীয়া সংস্কৃতি",
+    title: "মিজোৰামলৈ আমি যি লৈ যাওঁ",
+    sub: "এমজেডইউ উৎসৱত আমি গৌৰৱেৰে প্ৰদৰ্শন কৰা অসমৰ চাৰিটা ঝলক।",
+    cards: [
+      {
+        emoji: "🥁",
+        title: "বিহু – অসমৰ প্ৰাণ",
+        desc: "ৰঙালী, কঙালী আৰু ভোগালী বিহু। ঢোল, পেঁপা, গগনা, হুঁচৰি আৰু মুকলি বিহু নৃত্য — প্ৰতি বসন্ততে আমি আইজলত একেলগে উদযাপন কৰোঁ।",
+      },
+      {
+        emoji: "🧣",
+        title: "গামোচা আৰু মেখেলা",
+        desc: "বগা-ৰঙা গামোচা আমাৰ গৌৰৱ — সন্মান, মৰম আৰু পৰিচয়ৰ প্ৰতীক। প্ৰতিটো আদৰণি, সম্বৰ্ধনা আৰু বিহু মঞ্চত পৰিধান কৰা হয়।",
+      },
+      {
+        emoji: "🎩",
+        title: "জাপি আৰু শৰাই",
+        desc: "বাঁহৰ জাপি টুপী আৰু কাঁহৰ শৰাই — আতিথ্যৰ ঐতিহ্য, আমাৰ প্ৰকৃত সন্থাৰ ল'গ'তো দেখিব।",
+      },
+      {
+        emoji: "🍚",
+        title: "অসমীয়া খানা",
+        desc: "পিঠা-লাৰু, লাড়ু, কোমল চাউল, মাছৰ টেঙা, খাৰ আৰু বাঁহগাজ। এমজেডইউ উৎসৱত আমাৰ খাদ্য বিপণী আৰু বনভোজ আটাইতকৈ জনপ্ৰিয়।",
+      },
+    ],
+  },
+  events: {
+    kicker: "ইনষ্টাগ্ৰামৰ পৰা লোৱা",
+    title: "বিশেষ: ভৰ্তি সহায় কেন্দ্ৰ ২০২৬–২৭",
+    sub: "instagram.com/p/DYl13kzTHFC/ ৰ পৰা লোৱা প্ৰকৃত প'ষ্টাৰ + কেপচন — ১৪ লাইক। সন্থাৰ সহায় কেন্দ্ৰই প্ৰতিটো এমজেডইউ বিদ্যালয়ৰ বাবে সমন্বয়ক দিয়ে।",
+    scraped: "ইনষ্টাগ্ৰামৰ পৰা লোৱা • ১৪ লাইক •",
+    openPost: "প'ষ্ট খোলক ↗",
+    posterCaption:
+      "“অসম সন্থা, মিজোৰাম বিশ্ববিদ্যালয়ে মিজোৰাম বিশ্ববিদ্যালয়ৰ বিভিন্ন বিভাগত ভৰ্তি বিচৰা ছাত্ৰ-ছাত্ৰীক সহায় কৰিবলৈ এখন ভৰ্তি সহায় কেন্দ্ৰ আৰম্ভ কৰিছে। ছাত্ৰ-ছাত্ৰীয়ে ভৰ্তি প্ৰক্ৰিয়া • বিভাগৰ তথ্য • ছাত্ৰাবাসৰ সুবিধা • কেম্পাছ জীৱন আৰু অন্য নিৰ্দেশনাৰ বাবে সংশ্লিষ্ট সমন্বয়কৰ সৈতে সরাসৰি যোগাযোগ কৰিব পাৰে।”",
+    items: [
+      ["এপ্ৰিল", "ৰঙালী বিহু উদযাপন", "আমাৰ আটাইতকৈ ডাঙৰ নিশা — হুঁচৰি, বিহু নৃত্য, পিঠা ভোজ আৰু মিজো বন্ধুসকলৰ সৈতে সাংস্কৃতিক বিনিময়।"],
+      ["আগ – চেপ্তে", "নৱাগত আদৰণি", "গামোচাৰে নতুন অসমীয়া ছাত্ৰ-ছাত্ৰীৰ আদৰণি অনুষ্ঠান, নিৰ্দেশনা আৰু চহৰ ভ্ৰমণ।"],
+      ["অক্টো", "বনভোজ আৰু ক্ৰীড়া দিৱস", "হ্ৰদৰ পাৰত বনভোজ, অন্য ৰাজ্যৰ সন্থাৰ সৈতে ক্ৰিকেট/ফুটবল বন্ধুত্বপূৰ্ণ খেল।"],
+      ["জানু", "ভোগালী বিহু / উৰুকা ভোজ", "সমূহীয়া ভোজ আৰু জুইৰ নিশা, মিজোৰাম সংস্কৰণ।"],
+      ["মে'", "বিদায় সম্বৰ্ধনা", "স্নাতক জ্যেষ্ঠসকললৈ গামোচা আৰু শৰাইৰে সন্মান।"],
+    ],
+  },
+  insta: {
+    kicker: "জীৱন্ত ফিড",
+    title: "ইনষ্টাগ্ৰাম — @assam_association_mzu",
+    sub: "চৰকাৰী এমবেড ইনষ্টাগ্ৰামৰ পৰা জীৱন্তভাৱে ল'ড হয়। public/insta/ ত সংৰক্ষিত প্ৰতিলিপিয়ে অফলাইনতো ৱেবছাইট চলাই ৰাখে।",
+    caption:
+      "ভৰ্তি সহায় কেন্দ্ৰ (শিক্ষাবৰ্ষ ২০২৬–২০২৭) — প্ৰতিটো এমজেডইউ বিদ্যালয়ৰ সমন্বয়ক + ছাত্ৰাবাস ও কেম্পাছ নিৰ্দেশনা।",
+    live: "ইনষ্টাগ্ৰামৰ পৰা জীৱন্ত",
+    para: "৯৪ পোষ্ট • ২৩৪ অনুসৰণকাৰী (অক্টো ২০২৬)। বিহুৰ নিশা, নৱাগত আদৰণি, বনভোজ, বিদায় আৰু সহায় কেন্দ্ৰ — সম্পূৰ্ণ কাহিনী ইনষ্টাগ্ৰামত। এই এমবেড প'ষ্ট ইনষ্টাগ্ৰামৰ পৰা জীৱন্তভাৱে ল'ড হয়; public/insta/ ত সংৰক্ষিত ফটোবোৰ স্ক্ৰেপ কপি যাতে অফলাইনতো ৱেবছাইট চলে।",
+    follow: "ইনষ্টাগ্ৰামত অনুসৰণ কৰক ↗",
+    openPost: "সহায় কেন্দ্ৰৰ প'ষ্ট খোলক ↗",
+    note: "ইয়াত আৰু প'ষ্ট দেখুৱাবলৈ src/components/InstaFeed.tsx → POSTS ত শ্বৰ্টক'ড যোগ কৰক।",
+    viewPost: "ইনষ্টাগ্ৰামত এই প'ষ্ট চাওক",
+  },
+  team: {
+    kicker: "সমিতি",
+    title: "দলটোক লগ কৰক",
+    sub: "নিৰ্বাচিত ছাত্ৰ স্বেচ্ছাসেৱক। বৰ্তমান সমিতিৰ বাবে ইনষ্টাগ্ৰাম চাওক — এই পৃষ্ঠা আপডেট কৰিবলৈ ডিএমযোগে নাম পঠাওক।",
+    members: [
+      ["সভাপতি", "সভাপতি", "স", "সন্থাৰ নেতৃত্ব দিয়ে আৰু এমজেডইউ ছাত্ৰ মঞ্চত আমাক প্ৰতিনিধিত্ব কৰে।"],
+      ["উপ-সভাপতি", "উপ-সভাপতি", "উ", "অনুষ্ঠান, ছাত্ৰাবাস আৰু আন্তঃসন্থা সমন্বয়ত সহায় কৰে।"],
+      ["সাধাৰণ সম্পাদক", "সাধাৰণ সম্পাদক", "সা", "পৰিকল্পনা, সভা, নথি আৰু দৈনন্দিন কাম-কাজ।"],
+      ["সাংস্কৃতিক সম্পাদক", "সাংস্কৃতিক সম্পাদক", "সং", "বিহু নৃত্য পৰিচালনা, সংগীত, সাজপাৰ আৰু মঞ্চ সজ্জা।"],
+      ["কোষাধ্যক্ষ", "কোষাধ্যক্ষ", "কো", "সদস্যপদ, বাজেট আৰু স্বচ্ছ হিচাপ।"],
+      ["সহায় কেন্দ্ৰৰ মুৰব্বী", "ভৰ্তি সহায় কেন্দ্ৰ", "স", "নৱাগতৰ প্ৰথম যোগাযোগ — তলত প্ৰকৃত সমন্বয়কসকল চাওক।"],
+    ],
+  },
+  gallery: {
+    kicker: "স্মৃতি",
+    title: "গেলাৰী",
+    sub: "প্ৰথম ফটোখন ইনষ্টাগ্ৰামৰ পৰা লোৱা; বাকীবোৰ স্থানধাৰক — দেৱাল ভৰাবলৈ উৎসৱৰ প্ৰকৃত ফটো public/gallery/ ত ৰাখক।",
+    realBadge: "📸 প্ৰকৃত ইনষ্টা প'ষ্ট • সহায় কেন্দ্ৰ ২০২৬–২৭ ↗",
+    realAlt: "ইনষ্টাগ্ৰামৰ পৰা লোৱা: ভৰ্তি সহায় কেন্দ্ৰ ২০২৬-২০২৭ প'ষ্টাৰ",
+    assoc: "অসম সন্থা • এমজেডইউ",
+    tiles: [
+      ["ৰঙালী বিহু মঞ্চ", "💃"],
+      ["হুঁচৰি দল", "🥁"],
+      ["নৱাগত ২০২৫", "🎓"],
+      ["উৰুকা ভোজ", "🔥"],
+      ["বনভোজ", "🏞️"],
+      ["বিদায় নিশা", "🪔"],
+    ],
+  },
+  join: {
+    kicker: "যোগদান",
+    title: "এমজেডইউত নতুন? আপোনাৰ জ্যেষ্ঠক ফোন কৰক।",
+    sub: "ইনষ্টাগ্ৰামৰ সহায় কেন্দ্ৰৰ প'ষ্টাৰৰ পৰা লোৱা বিদ্যালয়ভিত্তিক প্ৰকৃত সমন্বয়ক। নম্বৰত টিপি ফোন কৰক।",
+    deskTitle: "🆘 ভৰ্তি সহায় কেন্দ্ৰ — প্ৰকৃত যোগাযোগ",
+    source: "উৎস:",
+    formTitle: "📝 সদস্যপদ ফৰ্ম (ডেম')",
+    form: {
+      name: "সম্পূৰ্ণ নাম",
+      dept: "বিভাগ",
+      phone: "ফোন / হোৱাটছএপ",
+      district: "অসমৰ ঘৰৰ জিলা",
+      btn: "যোগদানৰ অনুৰোধ →",
+      alert: "ধন্যবাদ! এয়া ডেম' ফৰ্ম — লাইভ কৰিবলৈ Google ফৰ্ম / হোৱাটছএপৰ সৈতে সংযোগ কৰক।",
+    },
+    supportTitle: "🙏 আমাক সহায় কৰক",
+    supportDesc: "বিহু মঞ্চ, শব্দ, নৱাগতৰ বাবে গামোচা আৰু ভোজ — সকলো সৰু বৰঙণিৰে চলে।",
+    donate: "দান কৰক",
+    dm: "ইনষ্টাগ্ৰামত ডিএম কৰক",
+  },
+  footer: {
+    quick: "দ্ৰুত লিংক",
+    insta: "ইনষ্টাগ্ৰাম",
+    profileBtn: "📸 @assam_association_mzu",
+    postBtn: "📌 সহায় কেন্দ্ৰৰ প'ষ্ট",
+    stats: "@assam_association_mzu • ২৩৪ অনুসৰণকাৰী • ৯৪ পোষ্ট",
+    credit:
+      "ল'গ' আৰু প'ষ্টাৰ ৰাজহুৱা প্ৰ'ফাইলৰ পৰা oEmbed/এমবেডযোগে লোৱা (public/insta/ATTRIBUTION.txt চাওক)। ছবি © অসম সন্থা, এমজেডইউ। সম্পূৰ্ণ ৯৪টা প'ষ্টৰ ফিডৰ বাবে লগইন লাগে — ওপৰৰ এমবেডবোৰ জীৱন্ত হৈ থাকে।",
+    rights: "অসম সন্থা, মিজোৰাম বিশ্ববিদ্যালয় • আইজলত ♥ ৰে নিৰ্মিত",
+    tag: "জয় আই অসম • Next.js এক-পৃষ্ঠাৰ ৱেবছাইট • অন্বেষণ কৰিবলৈ স্ক্ৰ'ল কৰক ↑",
+  },
+};
+
+const LanguageContext = createContext<{
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  t: Dict;
+}>({ lang: "en", setLang: () => {}, t: en });
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [lang, setLangState] = useState<Lang>("en");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("aamzu-lang");
+    if (saved === "en" || saved === "as") setLangState(saved);
+  }, []);
+
+  const setLang = (l: Lang) => {
+    setLangState(l);
+    localStorage.setItem("aamzu-lang", l);
+    document.documentElement.lang = l === "as" ? "as" : "en";
+  };
+
+  return (
+    <LanguageContext.Provider value={{ lang, setLang, t: lang === "as" ? as : en }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLang() {
+  return useContext(LanguageContext);
+}

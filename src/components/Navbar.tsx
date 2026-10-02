@@ -1,20 +1,49 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useLang, type Lang } from "./Language";
 
-const LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#culture", label: "Culture" },
-  { href: "#events", label: "Events" },
-  { href: "#instagram", label: "Instagram" },
-  { href: "#team", label: "Team" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#join", label: "Join Us" },
-];
+function LangToggle({ compact = false }: { compact?: boolean }) {
+  const { lang, setLang } = useLang();
+  return (
+    <div
+      className={`flex items-center rounded-full ring-1 ring-[#D4A017]/70 overflow-hidden text-xs font-bold ${
+        compact ? "" : "ml-1"
+      }`}
+      role="group"
+      aria-label="Language / ভাষা"
+    >
+      {(["en", "as"] as Lang[]).map((l) => (
+        <button
+          key={l}
+          onClick={() => setLang(l)}
+          className={`px-3 py-1.5 transition ${
+            lang === l
+              ? "bg-[#D4A017] text-[#1a0f0f]"
+              : "text-amber-100/80 hover:bg-white/10"
+          }`}
+        >
+          {l === "en" ? "EN" : "অসমীয়া"}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLang();
+
+  const LINKS = [
+    { href: "#home", label: t.nav.home },
+    { href: "#about", label: t.nav.about },
+    { href: "#culture", label: t.nav.culture },
+    { href: "#events", label: t.nav.events },
+    { href: "#instagram", label: t.nav.instagram },
+    { href: "#team", label: t.nav.team },
+    { href: "#gallery", label: t.nav.gallery },
+    { href: "#join", label: t.nav.join },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -45,10 +74,10 @@ export default function Navbar() {
           />
           <span className="leading-tight">
             <span className="block font-serif font-bold text-[#FFFBEB] text-base sm:text-lg">
-              Assam Association
+              {t.nav.brand1}
             </span>
             <span className="block text-[11px] sm:text-xs tracking-[0.2em] uppercase text-[#E7C873]">
-              Mizoram University
+              {t.nav.brand2}
             </span>
           </span>
         </a>
@@ -63,27 +92,31 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <LangToggle />
           <a
             href="https://www.instagram.com/assam_association_mzu/"
             target="_blank"
             rel="noreferrer"
             className="ml-2 px-4 py-2 text-sm font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white rounded-full ring-1 ring-[#D4A017] transition"
           >
-            Instagram ↗
+            {t.nav.instaBtn}
           </a>
         </div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 rounded-lg text-amber-50 hover:bg-white/10"
-          aria-label="Toggle menu"
-        >
-          {open ? (
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
-          ) : (
-            <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
-          )}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <LangToggle compact />
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded-lg text-amber-50 hover:bg-white/10"
+            aria-label={t.nav.menu}
+          >
+            {open ? (
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
+            ) : (
+              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+            )}
+          </button>
+        </div>
       </nav>
 
       {open && (

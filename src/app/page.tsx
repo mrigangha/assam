@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import InstaFeed from "@/components/InstaFeed";
 import Slideshow from "@/components/Slideshow";
+import { LanguageProvider, useLang } from "@/components/Language";
 
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
 const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
@@ -53,41 +54,9 @@ function SectionHeading({
   );
 }
 
-const CULTURE = [
-  {
-    emoji: "🥁",
-    title: "Bihu – Soul of Assam",
-    desc: "Rongali, Kongali & Bhogali Bihu. Dhol, pepa, gogona, hucari and mukoli bihu dance — we celebrate it together in Aizawl every spring.",
-  },
-  {
-    emoji: "🧣",
-    title: "Gamosa & Mekhela",
-    desc: "The white-red gamosa is our pride — a symbol of respect, love and identity. Worn at every welcome, felicitation and Bihu stage.",
-  },
-  {
-    emoji: "🎩",
-    title: "Jaapi & Xorai",
-    desc: "The bamboo jaapi hat and bell-metal xorai tray — heritage of hospitality you will also spot in our real association logo.",
-  },
-  {
-    emoji: "🍚",
-    title: "Axomiya Khana",
-    desc: "Pitha-laru, ladu, kumol chaul, masor tenga, khar & bamboo-shoot. Our food stalls & picnic are the most loved at MZU fests.",
-  },
-  {
-    emoji: "🦏",
-    title: "Kaziranga Pride",
-    desc: "One-horned rhino, mighty Brahmaputra, Kamakhya & Sivadol — we carry Assam's stories to the hills of Mizoram.",
-  },
-  {
-    emoji: "🎶",
-    title: "Bhaona & Sattriya",
-    desc: "Srimanta Sankardev's Ekasarana heritage, Borgeet, Sattriya dance & bhaona — classical soul we showcase on MZU stage.",
-  },
-];
-
 // Real coordinator list transcribed from the scraped Instagram poster
 // (Admission Help Desk 2026-2027, instagram.com/p/DYl13kzTHFC/)
+// Names & numbers are proper nouns — same in every language.
 const HELP_DESK = [
   {
     school: "SEMIS (Economics, Management & Info Science)",
@@ -164,50 +133,60 @@ const HELP_DESK = [
   },
 ];
 
-const TEAM = [
-  { name: "President", role: "President", initial: "P", desc: "Leads the association & represents us in MZU student forums." },
-  { name: "Vice President", role: "Vice President", initial: "V", desc: "Supports events, hostels & inter-association coordination." },
-  { name: "General Secretary", role: "General Secretary", initial: "G", desc: "Planning, meetings, records & day-to-day execution." },
-  { name: "Cultural Secy.", role: "Cultural Secretary", initial: "C", desc: "Bihu choreography, music, dress & stage decoration." },
-  { name: "Finance Secy.", role: "Treasurer", initial: "F", desc: "Membership, budgeting & transparent accounts." },
-  { name: "Help-Desk Lead", role: "Admission Help-Desk", initial: "H", desc: "Freshers' first contact — see real coordinators below." },
+const GALLERY_GRADS = [
+  "from-[#9E1B1E] to-[#4c0e0e]",
+  "from-[#D4A017] to-[#7C2D12]",
+  "from-emerald-800 to-emerald-950",
+  "from-orange-700 to-[#1a0f0f]",
+  "from-sky-700 to-slate-900",
+  "from-violet-900 to-[#1a0f0f]",
 ];
 
-export default function Home() {
+function HomeContent() {
+  const { t } = useLang();
+
+  const QUICK_LINKS: [string, string][] = [
+    ["#home", t.nav.home],
+    ["#about", t.nav.about],
+    ["#culture", t.nav.culture],
+    ["#events", t.nav.events],
+    ["#instagram", t.nav.instagram],
+    ["#team", t.nav.team],
+    ["#gallery", t.nav.gallery],
+    ["#join", t.nav.join],
+  ];
+
   return (
     <div className="min-h-screen bg-[#FFFBEB]">
       <Navbar />
 
-      {/* ============ HERO (real logo + real poster) ============ */}
+      {/* ============ HERO ============ */}
       <section id="home" className="hero-pattern relative overflow-hidden pt-28 pb-0 text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-14 grid lg:grid-cols-2 gap-10 items-center text-left">
           <div>
             <div className="inline-flex items-center gap-2 bg-white/10 ring-1 ring-[#D4A017]/60 text-[#E7C873] text-xs sm:text-sm px-4 py-1.5 rounded-full mb-5">
               <Image src="/insta/logo.jpg" alt="logo" width={20} height={20} className="rounded-full" />
-              @assam_association_mzu • 234 followers • 94 posts
+              {t.hero.badge}
             </div>
             <h1 className="font-serif-display text-3xl sm:text-5xl font-bold text-amber-50 leading-[1.1]">
-              Assam Association
-              <span className="block text-[#E7C873]">Mizoram University</span>
+              {t.hero.title1}
+              <span className="block text-[#E7C873]">{t.hero.title2}</span>
             </h1>
             <p className="mt-5 text-amber-100/85 text-base sm:text-lg leading-relaxed max-w-xl">
-              <strong className="text-white">Assam Association, Mizoram University</strong> —
-              home away from home for Assamese students at MZU. Logo & posters on this
-              site are scraped from our real Instagram — freshers, Bihu in Aizawl,
-              Admission Help-Desk and Axomiya culture, all here.
+              {t.hero.para}
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="#join"
                 className="px-6 py-3 rounded-full font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white ring-1 ring-[#D4A017] shadow-lg transition"
               >
-                Join the Family →
+                {t.hero.joinBtn}
               </a>
               <a
                 href="#instagram"
                 className="px-6 py-3 rounded-full font-semibold bg-white/10 hover:bg-white/20 text-amber-50 ring-1 ring-white/30 transition"
               >
-                Real Instagram Feed
+                {t.hero.feedBtn}
               </a>
               <a
                 href={INSTA_PROFILE}
@@ -215,15 +194,11 @@ export default function Home() {
                 rel="noreferrer"
                 className="px-6 py-3 rounded-full font-semibold bg-[#D4A017] hover:bg-[#b78c12] text-[#1a0f0f] transition"
               >
-                📸 @assam_association_mzu
+                {t.hero.instaBtn}
               </a>
             </div>
             <div className="mt-8 grid grid-cols-3 max-w-md gap-4">
-              {[
-                ["94", "IG Posts"],
-                ["234", "Followers"],
-                ["10", "Help-Desk Schools"],
-              ].map(([n, l]) => (
+              {t.hero.stats.map(([n, l]) => (
                 <div key={l} className="bg-white/5 ring-1 ring-white/15 rounded-2xl py-3 text-center">
                   <p className="text-2xl font-bold text-[#E7C873]">{n}</p>
                   <p className="text-xs uppercase tracking-widest text-amber-100/70">{l}</p>
@@ -242,7 +217,7 @@ export default function Home() {
                   <Image src="/insta/logo.jpg" alt="Real association logo from Instagram" width={40} height={40} className="rounded-full ring-1 ring-[#D4A017]" />
                   <div className="text-left min-w-0">
                     <p className="text-sm font-bold text-stone-900 truncate">assam_association_mzu</p>
-                    <p className="text-xs text-stone-500">Moments from our Instagram • <a className="underline" href={INSTA_PROFILE} target="_blank" rel="noreferrer">follow ↗</a></p>
+                    <p className="text-xs text-stone-500">{t.hero.instaLine} • <a className="underline" href={INSTA_PROFILE} target="_blank" rel="noreferrer">{t.hero.follow}</a></p>
                   </div>
                 </div>
               </div>
@@ -259,22 +234,22 @@ export default function Home() {
       <div className="bg-[#9E1B1E] text-amber-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm">
           <p>
-            📢 <strong>Admission Help-Desk 2026–27 open!</strong> Real coordinators below — scraped from{" "}
-            <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="underline underline-offset-2">this Instagram post</a>.
+            📢 {t.notice.text}{" "}
+            <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="underline underline-offset-2">{t.notice.post}</a>.
           </p>
           <a href="#join" className="shrink-0 bg-[#FFFBEB] text-[#9E1B1E] font-semibold px-4 py-1.5 rounded-full hover:bg-white transition">
-            Get Help →
+            {t.notice.btn}
           </a>
         </div>
       </div>
 
-      {/* ============ ABOUT (real logo) ============ */}
+      {/* ============ ABOUT ============ */}
       <section id="about" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
-            kicker="About Us"
-            title="A small Assam in Aizawl"
-            sub="The Assamese students' community at Mizoram University, Tanhril — seniors, juniors, researchers & alumni, one pariyal."
+            kicker={t.about.kicker}
+            title={t.about.title}
+            sub={t.about.sub}
           />
           <div className="grid md:grid-cols-[auto_1fr] gap-6 items-start bg-white rounded-3xl p-7 ring-1 ring-[#9E1B1E]/15 shadow-sm mb-6">
             <Image
@@ -285,38 +260,17 @@ export default function Home() {
               className="rounded-3xl ring-2 ring-[#D4A017] bg-white mx-auto"
             />
             <div>
-              <h3 className="font-serif-display text-2xl font-bold">Our real emblem — from Instagram</h3>
+              <h3 className="font-serif-display text-2xl font-bold">{t.about.emblemTitle}</h3>
               <p className="mt-2 text-stone-600 leading-relaxed">
-                This is the actual profile picture of{" "}
-                <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="text-[#9E1B1E] font-semibold underline underline-offset-2">
-                  @assam_association_mzu
-                </a>{" "}
-                (saved as <code>public/insta/logo.jpg</code>, see{" "}
-                <code>public/insta/ATTRIBUTION.txt</code> for scrape method). Red circular seal —
-                “ASSAM ASSOCIATION” on top arc, “MIZORAM UNIVERSITY” below, jaapi-xorai
-                heritage motif at the centre with a ribbon. It now serves as our navbar,
-                hero badge, footer and favicon.
+                {t.about.emblemDesc}
               </p>
               <p className="mt-2 text-sm text-stone-500">
-                234 Followers • 3 Following • 94 Posts (at scrape time, Oct 2026).
+                {t.about.emblemStats}
               </p>
             </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                t: "🤝 Who We Are",
-                d: "Every Assamese student admitted to MZU automatically becomes part of the family — from Dhemaji to Dhubri, Silchar to Sivasagar. We bridge home and hostel.",
-              },
-              {
-                t: "🎯 Our Mission",
-                d: "No Axomiya should feel alone in Mizoram. Support in admission, accommodation, language, health & homesickness — plus a vibrant cultural life.",
-              },
-              {
-                t: "🌉 What We Do",
-                d: "Freshers' welcome, Bihu festivals, help-desk, blood-donation, sports, food fests, farewell — and friendship with Mizo & other state associations.",
-              },
-            ].map((c) => (
+            {t.about.cards.map((c) => (
               <div key={c.t} className="card-hover bg-white rounded-3xl p-7 ring-1 ring-[#9E1B1E]/15 shadow-sm border-t-4 border-[#9E1B1E]">
                 <h3 className="text-xl font-bold mb-2">{c.t}</h3>
                 <p className="text-stone-600 leading-relaxed">{c.d}</p>
@@ -330,12 +284,12 @@ export default function Home() {
       <section id="culture" className="py-20 bg-gradient-to-b from-[#FFF7E6] to-[#FFFBEB] border-y border-[#D4A017]/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
-            kicker="Axomiya Culture"
-            title="What we carry to Mizoram"
-            sub="Six glimpses of Assam we proudly showcase at MZU fests, Virthli & University Week."
+            kicker={t.culture.kicker}
+            title={t.culture.title}
+            sub={t.culture.sub}
           />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CULTURE.map((c) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+            {t.culture.cards.map((c) => (
               <div key={c.title} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 shadow-sm">
                 <div className="w-12 h-12 rounded-2xl bg-[#9E1B1E]/10 flex items-center justify-center text-2xl mb-4">
                   {c.emoji}
@@ -353,38 +307,29 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
             light
-            kicker="Scraped from Instagram"
-            title="Featured: Admission Help-Desk 2026–27"
-            sub="Real poster + caption pulled from instagram.com/p/DYl13kzTHFC/ — 14 likes. The association's help-desk assigns coordinators per MZU school."
+            kicker={t.events.kicker}
+            title={t.events.title}
+            sub={t.events.sub}
           />
           <div className="grid lg:grid-cols-2 gap-6 items-start">
             <div className="bg-white text-stone-900 rounded-3xl overflow-hidden ring-1 ring-[#D4A017]/50">
-              <Image src="/insta/post-helpdesk-1.jpg" alt="Scraped poster" width={640} height={853} className="w-full h-auto" />
+              <Image src="/insta/post-helpdesk-1.jpg" alt={t.gallery.realAlt} width={640} height={853} className="w-full h-auto" />
               <div className="p-5 flex items-center gap-3">
                 <Image src="/insta/logo.jpg" alt="logo" width={44} height={44} className="rounded-full ring-1 ring-[#D4A017]" />
                 <div className="text-sm">
                   <p className="font-bold">assam_association_mzu</p>
-                  <p className="text-stone-500">Admission Help Desk (Session 2026–2027) • <a className="underline text-[#9E1B1E]" href={HELP_DESK_POST} target="_blank" rel="noreferrer">view on Instagram ↗</a></p>
+                  <p className="text-stone-500">{t.insta.caption} • <a className="underline text-[#9E1B1E]" href={HELP_DESK_POST} target="_blank" rel="noreferrer">{t.events.openPost}</a></p>
                 </div>
               </div>
               <div className="px-5 pb-5 text-sm text-stone-600 leading-relaxed border-t border-stone-200 pt-4">
-                “The Assam Association, Mizoram University, has initiated an Admission Help Desk to assist
-                students seeking admission to different departments of Mizoram University. Students can
-                directly contact the respective coordinators for: admission process • department info •
-                hostel facilities • campus life and other guidance.”
+                {t.events.posterCaption}
               </div>
             </div>
             <div className="grid gap-4">
-              {[
-                ["April", "Rongali Bihu Celebration", "Our biggest night — husori, bihu dance, pitha feast & cultural exchange with Mizo friends."],
-                ["Aug – Sep", "Freshers' Meet & Welcome", "Aadarani ceremony for new Assamese students with gamosa, guidance & city tour."],
-                ["Oct", "Picnic & Sports Day", "Lakeside picnic, cricket/football friendlies with other state associations."],
-                ["Jan", "Bhogali Bihu / Uruka Feast", "Community feast & bonfire night, Mizoram edition."],
-                ["May", "Farewell & Biday", "Gamosa & xorai honour for graduating seniors."],
-              ].map(([d, t, x]) => (
-                <div key={t} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
+              {t.events.items.map(([d, title, x]) => (
+                <div key={title} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
                   <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">{d}</span>
-                  <h3 className="font-bold text-lg mt-2">{t}</h3>
+                  <h3 className="font-bold text-lg mt-2">{title}</h3>
                   <p className="text-amber-100/75 text-[15px]">{x}</p>
                 </div>
               ))}
@@ -398,9 +343,9 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
             light
-            kicker="Live Feed"
-            title="Instagram — @assam_association_mzu"
-            sub="Official embeds load live from Instagram. Saved copies in public/insta/ keep the site working offline."
+            kicker={t.insta.kicker}
+            title={t.insta.title}
+            sub={t.insta.sub}
           />
           <InstaFeed />
         </div>
@@ -410,50 +355,43 @@ export default function Home() {
       <section id="team" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
-            kicker="Committee"
-            title="Meet the Team"
-            sub="Elected student volunteers. For the current committee, check Instagram highlights — or send names via DM to update this page."
+            kicker={t.team.kicker}
+            title={t.team.title}
+            sub={t.team.sub}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TEAM.map((m) => (
-              <div key={m.role} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
+            {t.team.members.map((m) => (
+              <div key={m[1]} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
                 <div className="w-16 h-16 mx-auto rounded-full bg-[#9E1B1E] text-white font-serif-display text-2xl font-bold flex items-center justify-center ring-4 ring-[#D4A017]/40">
-                  {m.initial}
+                  {m[2]}
                 </div>
-                <h3 className="mt-3 font-bold">{m.name}</h3>
-                <p className="text-xs uppercase tracking-widest text-[#9E1B1E] font-bold">{m.role}</p>
-                <p className="mt-2 text-sm text-stone-600">{m.desc}</p>
+                <h3 className="mt-3 font-bold">{m[0]}</h3>
+                <p className="text-xs uppercase tracking-widest text-[#9E1B1E] font-bold">{m[1]}</p>
+                <p className="mt-2 text-sm text-stone-600">{m[3]}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ============ GALLERY (real scraped photo first) ============ */}
+      {/* ============ GALLERY ============ */}
       <section id="gallery" className="py-20 bg-[#FFF7E6] border-y border-[#D4A017]/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
-            kicker="Memories"
-            title="Gallery"
-            sub="First photo is scraped from Instagram; the rest are placeholders — drop real fest photos into public/gallery/ to fill the wall."
+            kicker={t.gallery.kicker}
+            title={t.gallery.title}
+            sub={t.gallery.sub}
           />
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="card-hover col-span-2 row-span-2 relative rounded-3xl overflow-hidden ring-1 ring-black/10 shadow-sm block">
-              <Image src="/insta/post-helpdesk-1.jpg" alt="Scraped from Instagram: Admission Help Desk 2026-2027 poster" width={640} height={853} className="w-full h-full object-cover" />
-              <span className="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1.5 rounded-full">📸 Real IG post • Help-Desk 2026–27 ↗</span>
+              <Image src="/insta/post-helpdesk-1.jpg" alt={t.gallery.realAlt} width={640} height={853} className="w-full h-full object-cover" />
+              <span className="absolute bottom-3 left-3 bg-black/70 text-white text-xs px-3 py-1.5 rounded-full">{t.gallery.realBadge}</span>
             </a>
-            {[
-              ["Rongali Bihu Stage", "from-[#9E1B1E] to-[#4c0e0e]", "💃"],
-              ["Husori Team", "from-[#D4A017] to-[#7C2D12]", "🥁"],
-              ["Freshers 2025", "from-emerald-800 to-emerald-950", "🎓"],
-              ["Uruka Feast", "from-orange-700 to-[#1a0f0f]", "🔥"],
-              ["Picnic Day", "from-sky-700 to-slate-900", "🏞️"],
-              ["Farewell Night", "from-violet-900 to-[#1a0f0f]", "🪔"],
-            ].map(([t, g, e]) => (
-              <div key={t} className={`card-hover aspect-square rounded-3xl bg-gradient-to-br ${g} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`}>
+            {t.gallery.tiles.map(([title, e], i) => (
+              <div key={title} className={`card-hover aspect-square rounded-3xl bg-gradient-to-br ${GALLERY_GRADS[i % GALLERY_GRADS.length]} text-white p-4 flex flex-col justify-end shadow-sm ring-1 ring-black/10`}>
                 <div className="text-3xl">{e}</div>
-                <p className="font-semibold mt-1">{t}</p>
-                <p className="text-xs text-white/70">Assam Association • MZU</p>
+                <p className="font-semibold mt-1">{title}</p>
+                <p className="text-xs text-white/70">{t.gallery.assoc}</p>
               </div>
             ))}
           </div>
@@ -464,15 +402,15 @@ export default function Home() {
       <section id="join" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
-            kicker="Join Us"
-            title="New to MZU? Call your senior."
-            sub="Real school-wise coordinators transcribed from the Instagram Help-Desk poster. Tap a number to call."
+            kicker={t.join.kicker}
+            title={t.join.title}
+            sub={t.join.sub}
           />
           <div className="grid lg:grid-cols-5 gap-6">
             <div className="lg:col-span-3 bg-white rounded-3xl p-7 ring-1 ring-[#9E1B1E]/15 shadow-sm">
-              <h3 className="font-bold text-xl mb-1">🆘 Admission Help-Desk — real contacts</h3>
+              <h3 className="font-bold text-xl mb-1">{t.join.deskTitle}</h3>
               <p className="text-sm text-stone-500 mb-4">
-                Source: <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="underline text-[#9E1B1E]">instagram.com/p/DYl13kzTHFC/</a> • Session 2026–2027
+                {t.join.source} <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="underline text-[#9E1B1E]">instagram.com/p/DYl13kzTHFC/</a> • Session 2026–2027
               </p>
               <div className="grid sm:grid-cols-2 gap-3 max-h-[560px] overflow-y-auto pr-1">
                 {HELP_DESK.map((h) => (
@@ -494,34 +432,34 @@ export default function Home() {
             </div>
             <div className="lg:col-span-2 grid gap-6 content-start">
               <div className="bg-white rounded-3xl p-7 ring-1 ring-[#9E1B1E]/15 shadow-sm">
-                <h3 className="font-bold text-xl mb-4">📝 Membership Form (demo)</h3>
+                <h3 className="font-bold text-xl mb-4">{t.join.formTitle}</h3>
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    alert("Dhanyabad! This is a demo form — connect it to Google Forms / WhatsApp to go live.");
+                    alert(t.join.form.alert);
                   }}
                   className="grid gap-3"
                 >
-                  <input required placeholder="Full name" className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
+                  <input required placeholder={t.join.form.name} className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
                   <div className="grid grid-cols-2 gap-3">
-                    <input required placeholder="Department" className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
-                    <input required placeholder="Phone / WhatsApp" className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
+                    <input required placeholder={t.join.form.dept} className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
+                    <input required placeholder={t.join.form.phone} className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
                   </div>
-                  <input placeholder="Home district in Assam" className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
+                  <input placeholder={t.join.form.district} className="px-4 py-3 rounded-xl ring-1 ring-stone-300 focus:ring-[#9E1B1E] outline-none" />
                   <button className="mt-1 px-6 py-3 rounded-xl font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white transition">
-                    Request to Join →
+                    {t.join.form.btn}
                   </button>
                 </form>
               </div>
               <div className="bg-[#1a0f0f] text-amber-50 rounded-3xl p-7 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1.5 gamosa-strip" />
-                <h3 className="font-bold text-xl">🙏 Support Us</h3>
+                <h3 className="font-bold text-xl">{t.join.supportTitle}</h3>
                 <p className="mt-2 text-amber-100/80 text-[15px]">
-                  Bihu stage, sound, gamosa for freshers & feast — all run on small contributions.
+                  {t.join.supportDesc}
                 </p>
                 <div className="mt-4 flex gap-3">
-                  <a href="#contact" className="px-5 py-2.5 rounded-full bg-white text-[#9E1B1E] font-semibold text-sm">Donate</a>
-                  <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="px-5 py-2.5 rounded-full ring-1 ring-white/50 text-sm font-semibold">DM on Instagram</a>
+                  <a href="#contact" className="px-5 py-2.5 rounded-full bg-white text-[#9E1B1E] font-semibold text-sm">{t.join.donate}</a>
+                  <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="px-5 py-2.5 rounded-full ring-1 ring-white/50 text-sm font-semibold">{t.join.dm}</a>
                 </div>
               </div>
             </div>
@@ -538,46 +476,52 @@ export default function Home() {
               <div className="flex items-center gap-3">
                 <Image src="/insta/logo.jpg" alt="Real scraped logo" width={52} height={52} className="rounded-full bg-white ring-2 ring-[#D4A017]" />
                 <div>
-                  <p className="font-serif-display font-bold text-lg">Assam Association</p>
-                  <p className="text-xs tracking-[0.2em] uppercase text-[#E7C873]">Mizoram University</p>
+                  <p className="font-serif-display font-bold text-lg">{t.nav.brand1}</p>
+                  <p className="text-xs tracking-[0.2em] uppercase text-[#E7C873]">{t.nav.brand2}</p>
                 </div>
               </div>
               <p className="mt-4 text-amber-100/70 text-sm leading-relaxed">
                 Tanhril, Aizawl, Mizoram 796004<br />
                 <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-white font-semibold">
                   @assam_association_mzu
-                </a>{" "}• 234 followers • 94 posts<br />
+                </a><br />
+                {t.footer.stats}<br />
                 <a href="https://mzu.edu.in" target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:text-white">mzu.edu.in</a>
               </p>
             </div>
             <div>
-              <p className="font-bold mb-3 text-[#E7C873] uppercase tracking-widest text-xs">Quick Links</p>
+              <p className="font-bold mb-3 text-[#E7C873] uppercase tracking-widest text-xs">{t.footer.quick}</p>
               <div className="grid grid-cols-2 gap-1 text-sm">
-                {["#home|Home","#about|About","#culture|Culture","#events|Events","#instagram|Instagram","#team|Team","#gallery|Gallery","#join|Join Us"].map((s) => {
-                  const [h, l] = s.split("|");
-                  return <a key={h+l} href={h} className="py-1.5 text-amber-100/80 hover:text-white">{l}</a>;
-                })}
+                {QUICK_LINKS.map(([h, l]) => (
+                  <a key={h} href={h} className="py-1.5 text-amber-100/80 hover:text-white">{l}</a>
+                ))}
               </div>
             </div>
             <div>
-              <p className="font-bold mb-3 text-[#E7C873] uppercase tracking-widest text-xs">Instagram</p>
+              <p className="font-bold mb-3 text-[#E7C873] uppercase tracking-widest text-xs">{t.footer.insta}</p>
               <div className="flex flex-wrap gap-2">
-                <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-[#D4A017] text-[#1a0f0f] text-sm font-semibold hover:bg-[#b78c12] transition">📸 @assam_association_mzu</a>
-                <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-white/10 ring-1 ring-white/20 text-sm hover:bg-white/20 transition">📌 Help-Desk post</a>
+                <a href={INSTA_PROFILE} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-[#D4A017] text-[#1a0f0f] text-sm font-semibold hover:bg-[#b78c12] transition">{t.footer.profileBtn}</a>
+                <a href={HELP_DESK_POST} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-full bg-white/10 ring-1 ring-white/20 text-sm hover:bg-white/20 transition">{t.footer.postBtn}</a>
               </div>
               <p className="mt-3 text-xs text-amber-100/60 leading-relaxed">
-                Logo & poster scraped from the public profile via oEmbed/embed (see{" "}
-                <code>public/insta/ATTRIBUTION.txt</code>). Images © Assam Association, MZU.
-                Full 94-post feed needs login — embeds above stay live automatically.
+                {t.footer.credit}
               </p>
             </div>
           </div>
           <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-amber-100/60">
-            <p>© {new Date().getFullYear()} Assam Association, Mizoram University • Made with ♥ in Aizawl</p>
-            <p>জয় আই অসম • Next.js single-page site • Scroll to explore ↑</p>
+            <p>© {new Date().getFullYear()} {t.footer.rights}</p>
+            <p>{t.footer.tag}</p>
           </div>
         </div>
       </section>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <LanguageProvider>
+      <HomeContent />
+    </LanguageProvider>
   );
 }

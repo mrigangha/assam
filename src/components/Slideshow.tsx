@@ -3,33 +3,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+import { useLang } from "./Language";
+
 // Photos dropped by the owner into public/slideshow/.
-// To add more: save the file there and append { src, caption } below.
-const SLIDES = [
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-23-31.png",
-    caption: "Shraddhanjali to Zubeen Garg — tribute by the association",
-  },
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-23-39.png",
-    caption: "Memorial with gamosa, diyas & flowers",
-  },
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-24-06.png",
-    caption: "Bohagi Utsav — Bihu dance on the MZU stage",
-  },
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-24-46.png",
-    caption: "Honoured guests welcomed with gamosa",
-  },
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-26-14.png",
-    caption: "Tree plantation drive",
-  },
-  {
-    src: "/slideshow/Screenshot_2026-10-02_20-26-30.png",
-    caption: "Certificate felicitation — team photo",
-  },
+// To add more: save the file there and append the src below
+// plus one caption per language in Language.tsx → slides.captions.
+const SRCS = [
+  "/slideshow/Screenshot_2026-10-02_20-23-31.png",
+  "/slideshow/Screenshot_2026-10-02_20-23-39.png",
+  "/slideshow/Screenshot_2026-10-02_20-24-06.png",
+  "/slideshow/Screenshot_2026-10-02_20-24-46.png",
+  "/slideshow/Screenshot_2026-10-02_20-26-14.png",
+  "/slideshow/Screenshot_2026-10-02_20-26-30.png",
 ];
 
 const AUTOPLAY_MS = 4500;
@@ -38,10 +23,12 @@ export default function Slideshow() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const { t } = useLang();
+  const captions = t.slides.captions;
 
   const go = useCallback(
     (dir: 1 | -1) =>
-      setIndex((i) => (i + dir + SLIDES.length) % SLIDES.length),
+      setIndex((i) => (i + dir + SRCS.length) % SRCS.length),
     []
   );
 
@@ -61,11 +48,11 @@ export default function Slideshow() {
     >
       {/* slides — crossfade */}
       <div className="relative w-full aspect-[93/100]">
-        {SLIDES.map((s, i) => (
+        {SRCS.map((src, i) => (
           <Image
-            key={s.src}
-            src={s.src}
-            alt={s.caption}
+            key={src}
+            src={src}
+            alt={captions[i] ?? `Photo ${i + 1}`}
             fill
             sizes="(max-width: 1024px) 100vw, 420px"
             className={`object-contain transition-opacity duration-700 ${
@@ -79,10 +66,10 @@ export default function Slideshow() {
       {/* caption */}
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-4 pt-10 pb-3 text-left">
         <p key={index} className="text-white text-sm font-medium">
-          {SLIDES[index].caption}
+          {captions[index]}
         </p>
         <p className="text-white/60 text-xs mt-0.5">
-          {index + 1} / {SLIDES.length} • 📸 Assam Association, MZU
+          {index + 1} / {SRCS.length} • {t.slides.credit}
         </p>
       </div>
 
@@ -104,9 +91,9 @@ export default function Slideshow() {
 
       {/* dots */}
       <div className="absolute top-3 left-1/2 -translate-x-1/2 flex gap-1.5">
-        {SLIDES.map((s, i) => (
+        {SRCS.map((src, i) => (
           <button
-            key={s.src}
+            key={src}
             onClick={() => setIndex(i)}
             aria-label={`Go to photo ${i + 1}`}
             className={`h-2 rounded-full transition-all ${
