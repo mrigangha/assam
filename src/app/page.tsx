@@ -298,29 +298,14 @@ function HomeContent() {
             title={t.events.title}
             sub={t.events.sub}
           />
-          <div className="grid lg:grid-cols-2 gap-6 items-start">
-            <div className="bg-white text-stone-900 rounded-3xl overflow-hidden ring-1 ring-[#D4A017]/50">
-              <Image src="/insta/post-helpdesk-1.jpg" alt={t.gallery.realAlt} width={640} height={853} className="w-full h-auto" />
-              <div className="p-5 flex items-center gap-3">
-                <Image src="/insta/logo.jpg" alt="logo" width={44} height={44} className="rounded-full ring-1 ring-[#D4A017]" />
-                <div className="text-sm">
-                  <p className="font-bold">assam_association_mzu</p>
-                  <p className="text-stone-500">{t.insta.caption} • <a className="underline text-[#9E1B1E]" href={HELP_DESK_POST} target="_blank" rel="noreferrer">{t.events.openPost}</a></p>
-                </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {t.events.items.map(([d, title, x]) => (
+              <div key={title} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
+                <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">{d}</span>
+                <h3 className="font-bold text-lg mt-2">{title}</h3>
+                <p className="text-amber-100/75 text-[15px]">{x}</p>
               </div>
-              <div className="px-5 pb-5 text-sm text-stone-600 leading-relaxed border-t border-stone-200 pt-4">
-                {t.events.posterCaption}
-              </div>
-            </div>
-            <div className="grid gap-4">
-              {t.events.items.map(([d, title, x]) => (
-                <div key={title} className="bg-white/[0.06] ring-1 ring-white/15 rounded-2xl p-5">
-                  <span className="text-xs font-bold uppercase tracking-widest bg-[#D4A017] text-[#1a0f0f] px-3 py-1 rounded-full">{d}</span>
-                  <h3 className="font-bold text-lg mt-2">{title}</h3>
-                  <p className="text-amber-100/75 text-[15px]">{x}</p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
