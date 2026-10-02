@@ -1,0 +1,122 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+
+// Photos dropped by the owner into public/slideshow/.
+// To add more: save the file there and append { src, caption } below.
+const SLIDES = [
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-23-31.png",
+    caption: "Shraddhanjali to Zubeen Garg — tribute by the association",
+  },
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-23-39.png",
+    caption: "Memorial with gamosa, diyas & flowers",
+  },
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-24-06.png",
+    caption: "Bohagi Utsav — Bihu dance on the MZU stage",
+  },
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-24-46.png",
+    caption: "Honoured guests welcomed with gamosa",
+  },
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-26-14.png",
+    caption: "Tree plantation drive",
+  },
+  {
+    src: "/slideshow/Screenshot_2026-10-02_20-26-30.png",
+    caption: "Certificate felicitation — team photo",
+  },
+];
+
+const AUTOPLAY_MS = 4500;
+
+export default function Slideshow() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const go = useCallback(
+    (dir: 1 | -1) =>
+      setIndex((i) => (i + dir + SLIDES.length) % SLIDES.length),
+    []
+  );
+
+  useEffect(() => {
+    if (paused) return;
+    timer.current = setInterval(() => go(1), AUTOPLAY_MS);
+    return () => {
+      if (timer.current) clearInterval(timer.current);
+    };
+  }, [paused, go]);
+
+  return (
+    <div
+      className="relative w-full overflow-hidden rounded-2xl bg-black ring-4 ring-[#D4A017] shadow-2xl"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* slides — crossfade */}
+      <div className="relative w-full aspect-[93/100]">
+        {SLIDES.map((s, i) => (
+          <Image
+            key={s.src}
+            src={s.src}
+            alt={s.caption}
+            fill
+            sizes="(max-width: 1024px) 100vw, 420px"
+            className={`object-contain transition-opacity duration-700 ${
+              i === index ? "opacity-100" : "opacity-0"
+            }`}
+            priority={i === 0}
+          />
+        ))}
+      </div>
+
+      {/* caption */}
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-4 pt-10 pb-3 text-left">
+        <p key={index} className="text-white text-sm font-medium">
+          {SLIDES[index].caption}
+        </p>
+        <p className="text-white/60 text-xs mt-0.5">
+          {index + 1} / {SLIDES.length} • 📸 Assam Association, MZU
+        </p>
+      </div>
+
+      {/* arrows */}
+      <button
+        onClick={() => go(-1)}
+        aria-label="Previous photo"
+        className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/55 hover:bg-[#9E1B1E] text-white text-lg leading-none ring-1 ring-white/40 transition"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => go(1)}
+        aria-label="Next photo"
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/55 hover:bg-[#9E1B1E] text-white text-lg leading-none ring-1 ring-white/40 transition"
+      >
+        ›
+      </button>
+
+      {/* dots */}
+      <div className="absolute top-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+        {SLIDES.map((s, i) => (
+          <button
+            key={s.src}
+            onClick={() => setIndex(i)}
+            aria-label={`Go to photo ${i + 1}`}
+            className={`h-2 rounded-full transition-all ${
+              i === index
+                ? "w-6 bg-[#D4A017]"
+                : "w-2 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

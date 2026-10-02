@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import InstaFeed from "@/components/InstaFeed";
+import Slideshow from "@/components/Slideshow";
 
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
 const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
@@ -231,24 +232,17 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Real scraped poster + logo badge */}
+          {/* Photo slideshow (public/slideshow/) + logo badge */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative max-w-sm w-full">
               <div className="absolute -inset-6 bg-[#D4A017]/20 blur-3xl rounded-full" />
-              <div className="relative bg-white rounded-3xl overflow-hidden ring-4 ring-[#D4A017] shadow-2xl">
-                <Image
-                  src="/insta/post-helpdesk-1.jpg"
-                  alt="Scraped Instagram poster: Assam Association presents Mizoram University Admission Help Desk Session 2026-2027"
-                  width={640}
-                  height={853}
-                  className="w-full h-auto"
-                  priority
-                />
-                <div className="flex items-center gap-3 px-4 py-3 bg-white border-t border-stone-200">
+              <div className="relative">
+                <Slideshow />
+                <div className="mt-3 flex items-center gap-3 px-4 py-3 bg-white/95 rounded-2xl ring-1 ring-[#D4A017]/60">
                   <Image src="/insta/logo.jpg" alt="Real association logo from Instagram" width={40} height={40} className="rounded-full ring-1 ring-[#D4A017]" />
                   <div className="text-left min-w-0">
                     <p className="text-sm font-bold text-stone-900 truncate">assam_association_mzu</p>
-                    <p className="text-xs text-stone-500">Scraped from Instagram • 14 likes • <a className="underline" href={HELP_DESK_POST} target="_blank" rel="noreferrer">open post ↗</a></p>
+                    <p className="text-xs text-stone-500">Moments from our Instagram • <a className="underline" href={INSTA_PROFILE} target="_blank" rel="noreferrer">follow ↗</a></p>
                   </div>
                 </div>
               </div>
