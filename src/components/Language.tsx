@@ -177,7 +177,7 @@ const en = {
     tiles: [
       ["Rongali Bihu 2025", "💃"],
       ["Rongali Bihu 2026", "🥁"],
-      ["Freshers Social 2026", "🎓"],
+      ["Fresher Social 2025", "🎓"],
     ] as [string, string][],
   },
   join: {
@@ -392,7 +392,7 @@ const as: Dict = {
     tiles: [
       ["ৰঙালী বিহু ২০২৫", "💃"],
       ["ৰঙালী বিহু ২০২৬", "🥁"],
-      ["নৱাগত আদৰণি ২০২৬", "🎓"],
+      ["নৱাগত আদৰণি ২০২৫", "🎓"],
     ],
   },
   join: {
