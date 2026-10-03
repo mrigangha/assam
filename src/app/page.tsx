@@ -200,19 +200,12 @@ function HomeContent() {
             </div>
           </div>
 
-          {/* Photo slideshow (public/slideshow/) + logo badge */}
+          {/* Photo slideshow (public/slideshow/) */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative max-w-sm w-full">
               <div className="absolute -inset-6 bg-[#D4A017]/20 blur-3xl rounded-full" />
               <div className="relative">
                 <Slideshow />
-                <div className="mt-3 flex items-center gap-3 px-4 py-3 bg-white/95 rounded-2xl ring-1 ring-[#D4A017]/60">
-                  <Image src="/insta/logo.jpg" alt="Real association logo from Instagram" width={40} height={40} className="rounded-full ring-1 ring-[#D4A017]" />
-                  <div className="text-left min-w-0">
-                    <p className="text-sm font-bold text-stone-900 truncate">assam_association_mzu</p>
-                    <p className="text-xs text-stone-500">{t.hero.instaLine} • <a className="underline" href={INSTA_PROFILE} target="_blank" rel="noreferrer">{t.hero.follow}</a></p>
-                  </div>
-                </div>
               </div>
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap bg-[#9E1B1E] text-white text-sm px-5 py-2 rounded-full ring-2 ring-[#D4A017] shadow-xl">
                 অসম সন্থা • মিজোৰাম বিশ্ববিদ্যালয়

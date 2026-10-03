@@ -17,15 +17,17 @@ const SRCS = [
   "/slideshow/Screenshot_2026-10-02_20-26-30.png",
 ];
 
-const AUTOPLAY_MS = 4500;
+const AUTOPLAY_MS = 4000;
 
 export default function Slideshow() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchX = useRef<number | null>(null);
   const { t } = useLang();
   const captions = t.slides.captions;
 
+  // Infinite loop in both directions.
   const go = useCallback(
     (dir: 1 | -1) =>
       setIndex((i) => (i + dir + SRCS.length) % SRCS.length),
@@ -42,9 +44,18 @@ export default function Slideshow() {
 
   return (
     <div
-      className="relative w-full overflow-hidden rounded-2xl bg-black ring-4 ring-[#D4A017] shadow-2xl"
+      className="relative w-full overflow-hidden rounded-[1.75rem] bg-black ring-1 ring-[#D4A017]/70 shadow-[0_25px_70px_-20px_rgba(212,160,23,0.45)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => {
+        touchX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        if (touchX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+        touchX.current = null;
+      }}
     >
       {/* slides — crossfade */}
       <div className="relative w-full aspect-[93/100]">
@@ -64,13 +75,18 @@ export default function Slideshow() {
       </div>
 
       {/* caption */}
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-4 pt-10 pb-3 text-left">
-        <p key={index} className="text-white text-sm font-medium">
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-5 pt-12 pb-4 text-left">
+        <p key={index} className="text-white text-[15px] font-semibold drop-shadow">
           {captions[index]}
         </p>
-        <p className="text-white/60 text-xs mt-0.5">
-          {index + 1} / {SRCS.length} • {t.slides.credit}
-        </p>
+        <div className="mt-1.5 flex items-center justify-between">
+          <p className="text-[#E7C873] text-xs font-semibold tracking-widest">
+            {index + 1} / {SRCS.length} • {t.slides.credit}
+          </p>
+          <span className={`text-[10px] uppercase tracking-widest ${paused ? "text-white/80" : "text-white/40"}`}>
+            {paused ? "❚❚" : "▶"}
+          </span>
+        </div>
       </div>
 
       {/* arrows */}
