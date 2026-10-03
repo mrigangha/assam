@@ -154,6 +154,7 @@ function LaunchContent() {
   const mm = String(Math.floor(left / 60)).padStart(2, "0");
   const ss = String(left % 60).padStart(2, "0");
   const urgent = left <= 10 && phase === "ready";
+  const rocketBottom = phase === "ready" ? "-15%" : "115%";
 
   return (
     <div className="min-h-screen hero-pattern text-amber-50 flex flex-col">
@@ -328,16 +329,15 @@ function LaunchContent() {
         )}
       </div>
 
-      {/* rocket overlay */}
-      {phase !== "ready" && (
-        <div
-          aria-hidden
-          className="pointer-events-none fixed left-1/2 -translate-x-1/2 z-30 transition-[bottom] ease-in"
-          style={{
-            bottom: phase === "flying" ? "115%" : "-15%",
-            transitionDuration: phase === "flying" ? "3600ms" : "0ms",
-          }}
-        >
+      {/* rocket overlay — always mounted so the flight transition animates */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed left-1/2 -translate-x-1/2 z-30 transition-[bottom] ease-in"
+        style={{
+          bottom: rocketBottom,
+          transitionDuration: phase === "flying" ? "3600ms" : "0ms",
+        }}
+      >
           <div className="text-7xl sm:text-8xl -rotate-12 animate-pulse">🚀</div>
           <div className="mx-auto -mt-2 h-16 w-8 rounded-b-full bg-gradient-to-b from-yellow-300 via-orange-500 to-red-600 blur-[2px] animate-pulse" />
           {phase === "flying" &&
@@ -352,7 +352,6 @@ function LaunchContent() {
               />
             ))}
         </div>
-      )}
 
       <div className="h-2 gamosa-strip" />
     </div>
