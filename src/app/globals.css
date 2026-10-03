@@ -50,15 +50,6 @@ section {
   background-size: auto 100%;
 }
 
-/* Vertical gamosa cloth edges framing the page */
-.gamosa-side {
-  background-color: #9e1b1e;
-  background-image: url("/gamosa-side.svg");
-  background-repeat: repeat-y;
-  background-position: center top;
-  background-size: 100% auto;
-}
-
 .gamosa-border-b {
   background-image: repeating-linear-gradient(
       90deg,

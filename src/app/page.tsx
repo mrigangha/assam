@@ -162,10 +162,7 @@ function HomeContent() {
   ];
 
   return (
-    <div className="min-h-screen md:px-7 lg:px-9">
-      {/* gamosa cloth side edges */}
-      <div aria-hidden className="gamosa-side pointer-events-none fixed left-0 top-0 bottom-0 z-30 hidden w-7 md:block lg:w-9" />
-      <div aria-hidden className="gamosa-side pointer-events-none fixed right-0 top-0 bottom-0 z-30 hidden w-7 md:block lg:w-9" />
+    <div className="min-h-screen">
       <Navbar />
 
       {/* ============ HERO ============ */}
