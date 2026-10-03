@@ -175,9 +175,9 @@ const en = {
     realAlt: "Scraped from Instagram: Admission Help Desk 2026-2027 poster",
     assoc: "Assam Association • MZU",
     tiles: [
-      ["Rongali Bihu Stage", "💃"],
-      ["Husori Team", "🥁"],
-      ["Freshers 2025", "🎓"],
+      ["Rongali Bihu 2025", "💃"],
+      ["Rongali Bihu 2026", "🥁"],
+      ["Freshers Social 2026", "🎓"],
     ] as [string, string][],
   },
   join: {
@@ -390,9 +390,9 @@ const as: Dict = {
     realAlt: "ইনষ্টাগ্ৰামৰ পৰা লোৱা: ভৰ্তি সহায় কেন্দ্ৰ ২০২৬-২০২৭ প'ষ্টাৰ",
     assoc: "অসম সন্থা • এমজেডইউ",
     tiles: [
-      ["ৰঙালী বিহু মঞ্চ", "💃"],
-      ["হুঁচৰি দল", "🥁"],
-      ["নৱাগত ২০২৫", "🎓"],
+      ["ৰঙালী বিহু ২০২৫", "💃"],
+      ["ৰঙালী বিহু ২০২৬", "🥁"],
+      ["নৱাগত আদৰণি ২০২৬", "🎓"],
     ],
   },
   join: {
