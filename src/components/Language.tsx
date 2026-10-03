@@ -137,7 +137,7 @@ const en = {
   song: {
     back: "← Back to Home",
     kicker: "Association Song",
-    title: "Samabet Sangeet",
+    title: "Theme Song",
     sub: "The association song of Assam Association, Mizoram University — as printed in the Xasipat magazine.",
     chorus: "Chorus",
     creditLyrics: "Lyrics",
