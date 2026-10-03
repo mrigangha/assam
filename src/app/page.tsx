@@ -4,6 +4,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Magazine from "@/components/Magazine";
 import Slideshow from "@/components/Slideshow";
+import Countdown from "@/components/Countdown";
 import { LanguageProvider, useLang } from "@/components/Language";
 
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
@@ -198,6 +199,7 @@ function HomeContent() {
                 {t.hero.instaBtn}
               </a>
             </div>
+            <Countdown />
           </div>
 
           {/* Photo slideshow (public/slideshow/) */}

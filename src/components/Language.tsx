@@ -211,6 +211,16 @@ const en = {
     rights: "Assam Association, Mizoram University • Made with ♥ in Aizawl",
     tag: "জয় আই অসম • Next.js single-page site • Scroll to explore ↑",
   },
+  countdown: {
+    title: "Website Launch In",
+    days: "Days",
+    hours: "Hours",
+    mins: "Mins",
+    secs: "Secs",
+    live: "🎉 We are Live! Visit",
+    liveBtn: "assam-wheat.vercel.app ↗",
+    launching: "🚀 Launching...",
+  },
 };
 
 export type Dict = typeof en;
@@ -415,6 +425,16 @@ const as: Dict = {
       "ল'গ' আৰু প'ষ্টাৰ ৰাজহুৱা প্ৰ'ফাইলৰ পৰা oEmbed/এমবেডযোগে লোৱা (public/insta/ATTRIBUTION.txt চাওক)। ছবি © অসম সন্থা, এমজেডইউ। সম্পূৰ্ণ ৯৪টা প'ষ্টৰ ফিডৰ বাবে লগইন লাগে — ওপৰৰ এমবেডবোৰ জীৱন্ত হৈ থাকে।",
     rights: "অসম সন্থা, মিজোৰাম বিশ্ববিদ্যালয় • আইজলত ♥ ৰে নিৰ্মিত",
     tag: "জয় আই অসম • Next.js এক-পৃষ্ঠাৰ ৱেবছাইট • অন্বেষণ কৰিবলৈ স্ক্ৰ'ল কৰক ↑",
+  },
+  countdown: {
+    title: "ৱেবছাইট মুকলিলৈ",
+    days: "দিন",
+    hours: "ঘণ্টা",
+    mins: "মিনিট",
+    secs: "ছেকেণ্ড",
+    live: "🎉 মুকলি হ'ল! চাওক",
+    liveBtn: "assam-wheat.vercel.app ↗",
+    launching: "🚀 মুকলি হৈ আছে...",
   },
 };
 
