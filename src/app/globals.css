@@ -12,7 +12,9 @@ html {
 }
 
 body {
-  background: var(--assam-cream);
+  background-color: var(--assam-cream);
+  background-image: url("/gamosa-motif.svg");
+  background-size: 200px 200px;
   color: #1c1917;
   font-family: ui-sans-system, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
@@ -36,6 +38,16 @@ section {
     #fffbeb 28px 36px,
     #9e1b1e 36px 54px
   );
+}
+
+/* Rich woven gamosa edge band with diamond flowers (tileable SVG) */
+.gamosa-band {
+  height: 30px;
+  background-color: #9e1b1e;
+  background-image: url("/gamosa-band.svg");
+  background-repeat: repeat-x;
+  background-position: left center;
+  background-size: auto 100%;
 }
 
 .gamosa-border-b {

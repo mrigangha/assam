@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="32" viewBox="0 0 96 32">
+  <!-- Woven gamosa edge: deep red band, gold rules, white diamond flowers -->
+  <rect width="96" height="32" fill="#9E1B1E"/>
+  <rect width="96" height="4" fill="#D4A017"/>
+  <rect y="28" width="96" height="4" fill="#D4A017"/>
+  <g fill="#FFFBEB">
+    <rect x="11" y="10" width="12" height="12" transform="rotate(45 17 16)"/>
+    <rect x="41" y="10" width="12" height="12" transform="rotate(45 47 16)"/>
+    <rect x="71" y="10" width="12" height="12" transform="rotate(45 77 16)"/>
+    <circle cx="32" cy="16" r="3"/>
+    <circle cx="62" cy="16" r="3"/>
+    <circle cx="90" cy="16" r="3"/>
+    <circle cx="2" cy="16" r="3"/>
+  </g>
+</svg>

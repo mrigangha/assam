@@ -162,7 +162,7 @@ function HomeContent() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFFBEB]">
+    <div className="min-h-screen">
       <Navbar />
 
       {/* ============ HERO ============ */}
@@ -213,7 +213,7 @@ function HomeContent() {
             </div>
           </div>
         </div>
-        <div className="h-3 gamosa-strip" />
+        <div className="gamosa-band" />
       </section>
 
       {/* ============ NOTICE BAR ============ */}
@@ -263,7 +263,7 @@ function HomeContent() {
       </section>
 
       {/* ============ CULTURE ============ */}
-      <section id="culture" className="py-20 bg-gradient-to-b from-[#FFF7E6] to-[#FFFBEB] border-y border-[#D4A017]/30">
+      <section id="culture" className="py-20 bg-gradient-to-b from-[#FFF7E6]/85 to-[#FFFBEB]/85 border-y border-[#D4A017]/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
             kicker={t.culture.kicker}
@@ -366,7 +366,7 @@ function HomeContent() {
       </section>
 
       {/* ============ GALLERY ============ */}
-      <section id="gallery" className="py-20 bg-[#FFF7E6] border-y border-[#D4A017]/30">
+      <section id="gallery" className="py-20 bg-[#FFF7E6]/80 border-y border-[#D4A017]/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SectionHeading
             kicker={t.gallery.kicker}
@@ -505,7 +505,7 @@ function HomeContent() {
 
       {/* ============ CONTACT / FOOTER ============ */}
       <section id="contact" className="bg-[#1a0f0f] text-amber-50 pt-16 pb-8 relative">
-        <div className="absolute top-0 left-0 right-0 h-2 gamosa-strip" />
+        <div className="absolute top-0 left-0 right-0 gamosa-band" />
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-3 gap-10">
             <div>
