@@ -373,7 +373,6 @@ function HomeContent() {
           <SectionHeading
             kicker={t.gallery.kicker}
             title={t.gallery.title}
-            sub={t.gallery.sub}
           />
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
             {t.gallery.tiles.map(([title, e], i) => {

@@ -170,7 +170,6 @@ const en = {
   gallery: {
     kicker: "Memories",
     title: "Gallery",
-    sub: "Placeholders for now — real fest photos coming soon. Drop images into public/gallery/ to fill the wall.",
     realBadge: "📸 Real IG post • Help-Desk 2026–27 ↗",
     realAlt: "Scraped from Instagram: Admission Help Desk 2026-2027 poster",
     assoc: "Assam Association • MZU",
@@ -385,7 +384,6 @@ const as: Dict = {
   gallery: {
     kicker: "স্মৃতি",
     title: "গেলাৰী",
-    sub: "আপাততঃ স্থানধাৰক — উৎসৱৰ প্ৰকৃত ফটো সোনকালে আহি আছে। দেৱাল ভৰাবলৈ public/gallery/ ত ফটো ৰাখক।",
     realBadge: "📸 প্ৰকৃত ইনষ্টা প'ষ্ট • সহায় কেন্দ্ৰ ২০২৬–২৭ ↗",
     realAlt: "ইনষ্টাগ্ৰামৰ পৰা লোৱা: ভৰ্তি সহায় কেন্দ্ৰ ২০২৬-২০২৭ প'ষ্টাৰ",
     assoc: "অসম সন্থা • এমজেডইউ",
