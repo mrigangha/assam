@@ -67,7 +67,9 @@ function SongContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFBEB]">
+    <div className="min-h-screen md:px-7 lg:px-9">
+      <div aria-hidden className="gamosa-side pointer-events-none fixed left-0 top-0 bottom-0 z-30 hidden w-7 md:block lg:w-9" />
+      <div aria-hidden className="gamosa-side pointer-events-none fixed right-0 top-0 bottom-0 z-30 hidden w-7 md:block lg:w-9" />
       {/* simple header */}
       <header className="bg-[#1a0f0f] text-amber-50 sticky top-0 z-50">
         <div className="h-1.5 gamosa-strip" />
