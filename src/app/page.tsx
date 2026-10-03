@@ -10,6 +10,8 @@ import { LanguageProvider, useLang } from "@/components/Language";
 const INSTA_PROFILE = "https://www.instagram.com/assam_association_mzu/";
 const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
 const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1Gw_AePnKZDdMpu8nSOPH2xBXC9PMv-1B";
+const FRESHERS_DRIVE = "https://drive.google.com/drive/folders/1hoBWFzFxxbjCX1pXCwHq6sStBPV_gd_D";
+const RONGALI26_DRIVE = "https://drive.google.com/drive/folders/19wpdEhFce2WC32-WkvUWK0vrLQlgfBZ1";
 
 function SectionHeading({
   kicker,
@@ -381,9 +383,9 @@ function HomeContent() {
                 i === 0
                   ? { src: "/slideshow/Screenshot_2026-10-02_20-24-06.png", link: DRIVE_FOLDER }
                   : i === 1
-                    ? { src: "/hasuri.png", link: null as string | null }
+                    ? { src: "/hasuri.png", link: RONGALI26_DRIVE }
                     : i === 2
-                      ? { src: "/freshers.png", link: DRIVE_FOLDER }
+                      ? { src: "/freshers.png", link: FRESHERS_DRIVE }
                       : null;
               if (photo) {
                 const inner = (
