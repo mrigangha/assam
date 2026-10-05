@@ -171,6 +171,9 @@ function HomeContent() {
       <section id="home" className="hero-pattern relative overflow-hidden pt-28 pb-0 text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-14 grid lg:grid-cols-2 gap-10 items-center text-left">
           <div>
+            <p className="inline-block text-xs font-bold tracking-[0.25em] uppercase bg-[#D4A017]/15 text-[#E7C873] ring-1 ring-[#D4A017]/50 px-4 py-1.5 rounded-full mb-4">
+              ESTD 2015 • Assam Association
+            </p>
             <h1 className="font-serif-display text-3xl sm:text-5xl font-bold text-amber-50 leading-[1.1]">
               {t.hero.title1}
               <span className="block text-[#E7C873]">{t.hero.title2}</span>
@@ -178,6 +181,11 @@ function HomeContent() {
             <p className="mt-5 text-amber-100/85 text-base sm:text-lg leading-relaxed max-w-xl">
               {t.hero.para}
             </p>
+            <div className="mt-4 text-sm text-amber-100/70 space-y-1">
+              <p>{t.footer.launch}</p>
+              <p>{t.footer.designed}</p>
+              <p>{t.footer.concept}</p>
+            </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
                 href="#join"
@@ -527,7 +535,12 @@ function HomeContent() {
               </p>
             </div>
           </div>
-          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-amber-100/60">
+          <div className="mt-10 pt-6 border-t border-white/10 text-center text-xs text-amber-100/60 space-y-1">
+            <p>{t.footer.launch} • {t.footer.designed}</p>
+            <p>{t.footer.concept}</p>
+            <p>{t.footer.published}</p>
+          </div>
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-amber-100/60">
             <p>© {new Date().getFullYear()} {t.footer.rights}</p>
             <p>{t.footer.tag}</p>
           </div>

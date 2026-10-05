@@ -28,7 +28,7 @@ const en = {
   hero: {
     title1: "Assam Association",
     title2: "Mizoram University",
-    para: "অসম এছ’চিয়েচন, মিজোৰাম বিশ্ববিদ্যালয়ৰ আনুষ্ঠানিক ৱেবছাইটলৈ আপোনাক আন্তৰিক স্বাগতম। Estd. 2015",
+    para: "অসম এছ’চিয়েচন, মিজোৰাম বিশ্ববিদ্যালয়ৰ আনুষ্ঠানিক ৱেবছাইটলৈ আপোনাক স্বাগতম।",
     joinBtn: "Join the Family →",
     feedBtn: "Read Our Magazine",
     instaBtn: "📸 @assam_association_mzu",
@@ -53,7 +53,7 @@ const en = {
   },
   about: {
     kicker: "About Us",
-    title: "A small Assam in Aizawl",
+    title: "Rooted in Assam, Growing in Mizoram",
     sub: "The Assamese students' community at Mizoram University, Tanhril — seniors, juniors, researchers & alumni, one pariyal.",
     emblemTitle: "Our Emblem",
     emblemDesc:
@@ -211,6 +211,10 @@ const en = {
       "Logo & poster scraped from the public profile via oEmbed/embed (see public/insta/ATTRIBUTION.txt). Images © Assam Association, MZU. Full 94-post feed needs login — embeds above stay live automatically.",
     rights: "Assam Association, Mizoram University • Made with ♥ in Aizawl",
     tag: "জয় আই অসম • Next.js single-page site • Scroll to explore ↑",
+    launch: "Official Launch: 04 October 2026",
+    designed: "Designed by: Mrigangha Gupta",
+    concept: "Concept & Vision: Abdul Rajak Ahmed",
+    published: "Published by: Assam Association 2025-26, Mizoram University",
   },
   countdown: {
     title: "Website Launch In",
@@ -244,7 +248,7 @@ const as: Dict = {
   hero: {
     title1: "অসম সন্থা",
     title2: "মিজোৰাম বিশ্ববিদ্যালয়",
-    para: "অসম এছ’চিয়েচন, মিজোৰাম বিশ্ববিদ্যালয়ৰ আনুষ্ঠানিক ৱেবছাইটলৈ আপোনাক আন্তৰিক স্বাগতম। Estd. 2015",
+    para: "অসম এছ’চিয়েচন, মিজোৰাম বিশ্ববিদ্যালয়ৰ আনুষ্ঠানিক ৱেবছাইটলৈ আপোনাক স্বাগতম।",
     joinBtn: "পৰিয়ালত যোগ দিয়ক →",
     feedBtn: "আমাৰ আলোচনী পঢ়ক",
     instaBtn: "📸 @assam_association_mzu",
@@ -269,7 +273,7 @@ const as: Dict = {
   },
   about: {
     kicker: "আমাৰ বিষয়ে",
-    title: "আইজলত এখন সৰু অসম",
+    title: "অসমত শিপা, মিজোৰামত বিকাশ",
     sub: "মিজোৰাম বিশ্ববিদ্যালয়, তানহ্ৰিলৰ অসমীয়া ছাত্ৰ সমাজ — জ্যেষ্ঠ, কনিষ্ঠ, গৱেষক আৰু প্ৰাক্তন ছাত্ৰ, এক পৰিয়াল।",
     emblemTitle: "আমাৰ প্ৰতীক",
     emblemDesc:
@@ -427,6 +431,10 @@ const as: Dict = {
       "ল'গ' আৰু প'ষ্টাৰ ৰাজহুৱা প্ৰ'ফাইলৰ পৰা oEmbed/এমবেডযোগে লোৱা (public/insta/ATTRIBUTION.txt চাওক)। ছবি © অসম সন্থা, এমজেডইউ। সম্পূৰ্ণ ৯৪টা প'ষ্টৰ ফিডৰ বাবে লগইন লাগে — ওপৰৰ এমবেডবোৰ জীৱন্ত হৈ থাকে।",
     rights: "অসম সন্থা, মিজোৰাম বিশ্ববিদ্যালয় • আইজলত ♥ ৰে নিৰ্মিত",
     tag: "জয় আই অসম • Next.js এক-পৃষ্ঠাৰ ৱেবছাইট • অন্বেষণ কৰিবলৈ স্ক্ৰ'ল কৰক ↑",
+    launch: "Official Launch: 04 October 2026",
+    designed: "Designed by: Mrigangha Gupta",
+    concept: "Concept & Vision: Abdul Rajak Ahmed",
+    published: "Published by: Assam Association 2025-26, Mizoram University",
   },
   countdown: {
     title: "ৱেবছাইট মুকলিলৈ",
