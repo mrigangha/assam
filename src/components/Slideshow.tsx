@@ -9,6 +9,7 @@ import { useLang } from "./Language";
 // To add more: save the file there and append the src below
 // plus one caption per language in Language.tsx → slides.captions.
 const SRCS = [
+  "/slideshow/fresher-social-2026-01.jpeg",
   "/slideshow/Screenshot_2026-10-02_20-23-31.png",
   "/slideshow/Screenshot_2026-10-02_20-23-39.png",
   "/slideshow/Screenshot_2026-10-02_20-24-06.png",

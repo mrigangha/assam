@@ -152,7 +152,6 @@ function HomeContent() {
   const QUICK_LINKS: [string, string][] = [
     ["#home", t.nav.home],
     ["#about", t.nav.about],
-    ["#culture", t.nav.culture],
     ["#events", t.nav.events],
     ["#magazine", t.nav.instagram],    ["#team", t.nav.team],
     ["#gallery", t.nav.gallery],
@@ -261,36 +260,6 @@ function HomeContent() {
                 <p className="text-stone-600 leading-relaxed">{c.d}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============ CULTURE ============ */}
-      <section id="culture" className="py-20 bg-gradient-to-b from-[#FFF7E6]/85 to-[#FFFBEB]/85 border-y border-[#D4A017]/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <SectionHeading
-            kicker={t.culture.kicker}
-            title={t.culture.title}
-            sub={t.culture.sub}
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
-            {t.culture.cards.map((c) => (
-              <div key={c.title} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 shadow-sm">
-                <div className="w-12 h-12 rounded-2xl bg-[#9E1B1E]/10 flex items-center justify-center text-2xl mb-4">
-                  {c.emoji}
-                </div>
-                <h3 className="font-bold text-lg mb-1.5">{c.title}</h3>
-                <p className="text-stone-600 text-[15px] leading-relaxed">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <a
-              href="/song"
-              className="inline-block px-7 py-3 rounded-full font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white ring-1 ring-[#D4A017] shadow-lg transition"
-            >
-              {t.culture.songBtn}
-            </a>
           </div>
         </div>
       </section>

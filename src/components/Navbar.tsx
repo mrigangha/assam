@@ -37,7 +37,6 @@ export default function Navbar() {
   const LINKS = [
     { href: "#home", label: t.nav.home },
     { href: "#about", label: t.nav.about },
-    { href: "#culture", label: t.nav.culture },
     { href: "#events", label: t.nav.events },
     { href: "#magazine", label: t.nav.instagram },
     { href: "#team", label: t.nav.team },
