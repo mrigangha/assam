@@ -11,6 +11,7 @@ const HELP_DESK_POST = "https://www.instagram.com/p/DYl13kzTHFC/";
 const DRIVE_FOLDER = "https://drive.google.com/drive/folders/1Gw_AePnKZDdMpu8nSOPH2xBXC9PMv-1B";
 const FRESHERS_DRIVE = "https://drive.google.com/drive/folders/1hoBWFzFxxbjCX1pXCwHq6sStBPV_gd_D";
 const RONGALI26_DRIVE = "https://drive.google.com/drive/folders/19wpdEhFce2WC32-WkvUWK0vrLQlgfBZ1";
+const FRESHERS2026_PHOTOS = "https://photos.app.goo.gl/dxRYPK9ysyVkPiGu5";
 
 function SectionHeading({
   kicker,
@@ -383,7 +384,9 @@ function HomeContent() {
                     ? { src: "/hasuri.png", link: RONGALI26_DRIVE }
                     : i === 2
                       ? { src: "/freshers.png", link: FRESHERS_DRIVE }
-                      : null;
+                      : i === 3
+                        ? { src: "/fresher_social2026.png", link: FRESHERS2026_PHOTOS }
+                        : null;
               if (photo) {
                 const inner = (
                   <>
@@ -395,7 +398,9 @@ function HomeContent() {
                       className="object-cover"
                     />
                     {photo.link && (
-                      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">↗ Drive</span>
+                      <span className="absolute top-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">
+                        {photo.link.includes("photos.app.goo.gl") ? "↗ Photos" : "↗ Drive"}
+                      </span>
                     )}
                     <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pt-8 pb-4 text-white">
                       <span className="font-semibold block">{title}</span>

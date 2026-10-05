@@ -177,6 +177,7 @@ const en = {
       ["Rongali Bihu 2025", "💃"],
       ["Rongali Bihu 2026", "🥁"],
       ["Fresher Social 2025", "🎓"],
+      ["Fresher Social 2026", "🎉"],
     ] as [string, string][],
   },
   join: {
@@ -391,6 +392,7 @@ const as: Dict = {
       ["ৰঙালী বিহু ২০২৫", "💃"],
       ["ৰঙালী বিহু ২০২৬", "🥁"],
       ["নৱাগত আদৰণি ২০২৫", "🎓"],
+      ["নৱাগত আদৰণি ২০২৬", "🎉"],
     ],
   },
   join: {
