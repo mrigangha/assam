@@ -261,6 +261,14 @@ function HomeContent() {
               </div>
             ))}
           </div>
+          <div className="mt-8 text-center">
+            <a
+              href="/song"
+              className="inline-block px-7 py-3 rounded-full font-semibold bg-[#9E1B1E] hover:bg-[#7f1414] text-white ring-1 ring-[#D4A017] shadow-lg transition"
+            >
+              {t.culture.songBtn}
+            </a>
+          </div>
         </div>
       </section>
 
