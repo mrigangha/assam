@@ -213,7 +213,7 @@ const en = {
     tag: "জয় আই অসম • Next.js single-page site • Scroll to explore ↑",
     launch: "Official Launch: 04 October 2026",
     designed: "Designed by: Mrigangha Gupta",
-    concept: "Concept & Vision: Abdul Rajak Ahmed",
+    concept: "Concept & Vision: Abdul Rajak Ahmed, General Secy, Assam Association 2025-26",
     published: "Published by: Assam Association 2025-26, Mizoram University",
   },
   countdown: {
@@ -433,7 +433,7 @@ const as: Dict = {
     tag: "জয় আই অসম • Next.js এক-পৃষ্ঠাৰ ৱেবছাইট • অন্বেষণ কৰিবলৈ স্ক্ৰ'ল কৰক ↑",
     launch: "Official Launch: 04 October 2026",
     designed: "Designed by: Mrigangha Gupta",
-    concept: "Concept & Vision: Abdul Rajak Ahmed",
+    concept: "Concept & Vision: Abdul Rajak Ahmed, General Secy, Assam Association 2025-26",
     published: "Published by: Assam Association 2025-26, Mizoram University",
   },
   countdown: {
