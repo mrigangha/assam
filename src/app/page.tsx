@@ -379,13 +379,13 @@ function HomeContent() {
             {t.gallery.tiles.map(([title, e], i) => {
               const photo =
                 i === 0
-                  ? { src: "/slideshow/Screenshot_2026-10-02_20-24-06.png", link: DRIVE_FOLDER }
+                  ? { src: "/fresher_social2026.png", link: FRESHERS2026_PHOTOS }
                   : i === 1
-                    ? { src: "/hasuri.png", link: RONGALI26_DRIVE }
+                    ? { src: "/slideshow/Screenshot_2026-10-02_20-24-06.png", link: DRIVE_FOLDER }
                     : i === 2
-                      ? { src: "/freshers.png", link: FRESHERS_DRIVE }
+                      ? { src: "/hasuri.png", link: RONGALI26_DRIVE }
                       : i === 3
-                        ? { src: "/fresher_social2026.png", link: FRESHERS2026_PHOTOS }
+                        ? { src: "/freshers.png", link: FRESHERS_DRIVE }
                         : null;
               if (photo) {
                 const inner = (

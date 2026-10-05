@@ -174,10 +174,10 @@ const en = {
     realAlt: "Scraped from Instagram: Admission Help Desk 2026-2027 poster",
     assoc: "Assam Association • MZU",
     tiles: [
+      ["Fresher Social 2026", "🎉"],
       ["Rongali Bihu 2025", "💃"],
       ["Rongali Bihu 2026", "🥁"],
       ["Fresher Social 2025", "🎓"],
-      ["Fresher Social 2026", "🎉"],
     ] as [string, string][],
   },
   join: {
@@ -389,10 +389,10 @@ const as: Dict = {
     realAlt: "ইনষ্টাগ্ৰামৰ পৰা লোৱা: ভৰ্তি সহায় কেন্দ্ৰ ২০২৬-২০২৭ প'ষ্টাৰ",
     assoc: "অসম সন্থা • এমজেডইউ",
     tiles: [
+      ["নৱাগত আদৰণি ২০২৬", "🎉"],
       ["ৰঙালী বিহু ২০২৫", "💃"],
       ["ৰঙালী বিহু ২০২৬", "🥁"],
       ["নৱাগত আদৰণি ২০২৫", "🎓"],
-      ["নৱাগত আদৰণি ২০২৬", "🎉"],
     ],
   },
   join: {
