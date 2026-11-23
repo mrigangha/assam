@@ -152,7 +152,7 @@ const en = {
     title: "Meet the Team",
     sub: "Executive Committee 2026–27 — names, posts & photos.",
     members: [
-      ["Chhan Kumar Kalita", "President", "C", "Executive Committee 2026–27 • Assam Association, MZU", "/team/Chhan Kumar Kalita, President.jpeg"],
+      ["Chhan Kumar Kalita", "President", "C", "Executive Committee 2026–27 • Assam Association, MZU", "/team/chhan-kumar-kalita-president.jpeg"],
       ["Mintu Medhi", "Vice-President", "M", "Executive Committee 2026–27 • Assam Association, MZU", "/team/Mintu MedhiVice President.jpeg"],
       ["Jyotishman Kalita", "Joint General Secretary", "J", "Executive Committee 2026–27 • Assam Association, MZU", "/team/Jyotishman KalitaJoint General Secretary.jpeg"],
       ["Parnakshi Sarma", "Joint General Secretary", "P", "Executive Committee 2026–27 • Assam Association, MZU", "/team/Parnakshi SarmaJoint General Secretary.jpeg"],
@@ -378,7 +378,7 @@ const as: Dict = {
     title: "দলটোক লগ কৰক",
     sub: "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ — নাম, পদ আৰু ফটো।",
     members: [
-      ["ছান কুমাৰ কলিতা", "সভাপতি", "ছ", "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ • অসম সন্থা, এমজেডইউ", "/team/Chhan Kumar Kalita, President.jpeg"],
+      ["ছান কুমাৰ কলিতা", "সভাপতি", "ছ", "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ • অসম সন্থা, এমজেডইউ", "/team/chhan-kumar-kalita-president.jpeg"],
       ["মিন্টু মেধি", "উপ-সভাপতি", "ম", "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ • অসম সন্থা, এমজেডইউ", "/team/Mintu MedhiVice President.jpeg"],
       ["জ্যোতিষ্মান কলিতা", "যুটীয়া সাধাৰণ সম্পাদক", "জ", "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ • অসম সন্থা, এমজেডইউ", "/team/Jyotishman KalitaJoint General Secretary.jpeg"],
       ["পৰ্ণাক্ষী শৰ্মা", "যুটীয়া সাধাৰণ সম্পাদক", "প", "কাৰ্যনিৰ্বাহক সমিতি ২০২৬–২৭ • অসম সন্থা, এমজেডইউ", "/team/Parnakshi SarmaJoint General Secretary.jpeg"],
