@@ -322,12 +322,6 @@ function HomeContent() {
             title={t.team.title}
             sub={t.team.sub}
           />
-          <figure className="card-hover relative rounded-3xl overflow-hidden ring-1 ring-[#9E1B1E]/15 shadow-sm mb-6 bg-white">
-            <Image src="/team/group-2025-26.jpg" alt={t.team.groupCap} width={920} height={460} className="w-full h-auto" />
-            <figcaption className="px-5 py-3 text-sm font-semibold text-stone-700 border-t border-stone-200">
-              📸 {t.team.groupCap}
-            </figcaption>
-          </figure>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {t.team.members.map((m) => (
               <div key={m[0] + m[1]} className="card-hover bg-white rounded-3xl p-6 ring-1 ring-stone-200 text-center">
